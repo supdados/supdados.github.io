@@ -1,0 +1,17 @@
+.wy-side-nav-search{
+    background-color: #6949f3;
+}
+
+.wy-nav-side{
+    background-color: #052854;
+}
+.wy-nav-content{
+    max-width: 100%;
+    height: 100vh;
+}
+
+.wy-nav-content .rst-content{
+    width: 100%;
+    height: 100%;
+}
+

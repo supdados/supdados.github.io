@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt_BR" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Modelo de Avaliação de Chatbot. - Almanaque SETD</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Modelo de Avalia\u00e7\u00e3o de Chatbot.";
+        var mkdocs_page_input_path = "Relatorios\\avaliacaoChatbot.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/Ass-Digital_Transformacao-Digital_Negativo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" title="Digite o termo a ser buscado aqui" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Relatorios</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Modelo de Avaliação de Chatbot.</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#autores">Autores</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#texto">Texto</a>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../relatorioCalculoGanhosAmbientais/">Relatório referente ao processo de cálculo de ganhos ambientais do SEI-RJ</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Rotinas</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Rotinas/extracaoTratamentoPainelSETD/">extracao_tratamento_painel_SETD.py</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Rotinas/minera%C3%A7%C3%A3oDOs/">pdfReader.py, v3.py e v4.py</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Menu de navegação em dispositivo móvel">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Almanaque SETD</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Documentos"></a></li>
+          <li class="breadcrumb-item">Relatorios</li>
+      <li class="breadcrumb-item active">Modelo de Avaliação de Chatbot.</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="modelo-de-avaliacao-de-chatbot">Modelo de Avaliação de Chatbot.</h1>
+<style type="text/css">
+   .rst-content .section .docutils {
+    display: table;
+   } 
+   figcaption {
+    font-weight:bold;
+    font-size: 16px;
+   }
+
+</style>
+
+<h2 id="autores">Autores</h2>
+<p>Beatriz Gomes de Souza  </p>
+<h2 id="texto">Texto</h2>
+<p>Este relatório apresenta a avaliação de desempenho de um chatbot voltado para a consulta de serviços, com o objetivo de verificar sua eficácia na compreensão das solicitações dos usuários, precisão nas respostas e fluidez na interação. A análise abrange tanto métricas quantitativas — como acurácia, precisão, recall e F1-score — quanto aspectos qualitativos relacionados à experiência do usuário, como a satisfação geral com o atendimento.</p>
+<p>Além disso, são consideradas análises técnicas relacionadas ao modelo de linguagem utilizado, incluindo a qualidade dos embeddings semânticos responsáveis por mapear as intenções e variações linguísticas dos usuários. A partir dos resultados obtidos, o modelo de avaliação aqui descrito viabiliza oportunidades de aprimoramento do sistema e recomendações para futuras atualizações do chatbot.</p>
+<p>Neste momento, o modelo de avaliação adotado irá desconsiderar as variáveis qualitativas tradicionais, como clareza da linguagem e naturalidade da conversa, uma vez que essas dependem da aplicação de instrumentos específicos, como pesquisas de satisfação, entrevistas ou testes de usabilidade, os quais não estão disponíveis no presente estágio da análise. Assim, a avaliação qualitativa será limitada ao feedback espontâneo fornecido pelos usuários durante o uso do chatbot, registrado no próprio fluxo de interação.</p>
+<p>Para avaliação do desempenho geral, genericamente, usar-se-á as seguintes definições: </p>
+<table>
+<thead>
+<tr>
+<th>Métrica</th>
+<th>O que avalia?</th>
+<th>Observações</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(COUNT (PROCESSO) x 27.81) x 0.00014</td>
+<td>(COUNT (PROCESSO) x 27.81) x 0.5</td>
+<td>(COUNT (PROCESSO) x 27.81) x 0.04</td>
+</tr>
+<tr>
+<td>Acurácia</td>
+<td>Percentual de acertos na identificação correta da intenção</td>
+<td>Pode mascarar performance se classes forem desbalanceadas</td>
+</tr>
+<tr>
+<td>Matriz de confusão</td>
+<td>Desempenho de um modelo de classificação</td>
+<td>Quantas previsões ele acertou ou errou em comparação com os valores reais</td>
+</tr>
+<tr>
+<td>Relevância</td>
+<td>Cumprimento da necessidade de informação do usuário</td>
+<td>Realizada a partir da análise dos embeddings</td>
+</tr>
+<tr>
+<td>Recall</td>
+<td>Cobertura dos acertos sobre todas as intenções</td>
+<td>Baixo recall indica que muitas intenções reais não foram detectadas</td>
+</tr>
+<tr>
+<td>Precisão</td>
+<td>Correção das intenções/respostas dadas</td>
+<td>Alta precisão evita respostas incorretas</td>
+</tr>
+<tr>
+<td>Taxa de fallback</td>
+<td>Quantas vezes o bot não entendeu</td>
+<td>Fallback frequente pode indicar falhas no NLP</td>
+</tr>
+<tr>
+<td>F1 Score</td>
+<td>Média harmônica de precisão e recall</td>
+<td>Boa métrica geral de desempenho</td>
+</tr>
+<tr>
+<td>Feedback do usuário</td>
+<td>Retorno dado pelo próprio usuário sobre o bot</td>
+<td>Indica satisfação dos usuários do bot</td>
+</tr>
+</tbody>
+</table>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Navegação no rodapé">
+        <a href="../.." class="btn btn-neutral float-left" title="Home"><span class="icon icon-circle-arrow-left"></span> Anterior</a>
+        <a href="../relatorioCalculoGanhosAmbientais/" class="btn btn-neutral float-right" title="Relatório referente ao processo de cálculo de ganhos ambientais do SEI-RJ">Seguinte <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Construído com <a href="https://www.mkdocs.org/">MkDocs</a> usando um <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a> provido por <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versões">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../.." style="color: #fcfcfc">&laquo; Anterior</a></span>
+    
+    
+      <span><a href="../relatorioCalculoGanhosAmbientais/" style="color: #fcfcfc">Seguinte &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

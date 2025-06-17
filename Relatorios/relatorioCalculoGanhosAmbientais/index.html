@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt_BR" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>Relatório referente ao processo de cálculo de ganhos ambientais do SEI-RJ - Almanaque SETD</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "Relat\u00f3rio referente ao processo de c\u00e1lculo de ganhos ambientais do SEI-RJ";
+        var mkdocs_page_input_path = "Relatorios\\relatorioCalculoGanhosAmbientais.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/Ass-Digital_Transformacao-Digital_Negativo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" title="Digite o termo a ser buscado aqui" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Relatorios</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../avaliacaoChatbot/">Modelo de Avaliação de Chatbot.</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">Relatório referente ao processo de cálculo de ganhos ambientais do SEI-RJ</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#autores">Autores</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#introducao">Introdução</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#metodologia">Metodologia</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#resultados">Resultados</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#conclusao">Conclusão</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Rotinas</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Rotinas/extracaoTratamentoPainelSETD/">extracao_tratamento_painel_SETD.py</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Rotinas/minera%C3%A7%C3%A3oDOs/">pdfReader.py, v3.py e v4.py</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Menu de navegação em dispositivo móvel">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Almanaque SETD</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Documentos"></a></li>
+          <li class="breadcrumb-item">Relatorios</li>
+      <li class="breadcrumb-item active">Relatório referente ao processo de cálculo de ganhos ambientais do SEI-RJ</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="relatorio-referente-ao-processo-de-calculo-de-ganhos-ambientais-do-sei-rj">Relatório referente ao processo de cálculo de ganhos ambientais do SEI-RJ</h1>
+<style type="text/css">
+   .rst-content .section .docutils {
+    display: table;
+   } 
+   figcaption {
+    font-weight:bold;
+    font-size: 16px;
+   }
+
+</style>
+
+<h2 id="autores">Autores</h2>
+<p>Beatriz Gomes de Souza<br />
+José Hudson de Oliveira Guimarães Júnior<br />
+Juliano Pais Canosa Portilho de Avellar<br />
+Madalena Alves dos Santos<br />
+Rodrigo Campos Martins  </p>
+<h2 id="introducao">Introdução</h2>
+<p>Em um mundo em que o avanço tecnológico é dado em aceleração crescente, a digitalização tem sido um processo que acomete todos os aspectos da vida humana. A transformação digital, além de revolucionar a forma de comunicação e colaboração, apresenta-se como um aliado à preservação ambiental. Em termos gerais, a transição do físico para o digital pode ser destacada pelo seu papel de redução de danos humanos ao planeta. 
+Ao substituir documentos físicos por arquivos digitais, descarta-se a necessidade de uso de matérias primas como papel, água e outros recursos, o que implica em menor apropriação de recursos naturais para operacionalidade das instituições. Além disso, a otimização de processos por meio da transformação digital através de softwares e plataformas digitais diminui a necessidade de deslocamentos, contribuindo para a redução das emissões de gases do efeito estufa.</p>
+<p>É através de sistemas de monitoramento remoto que o acompanhamento do potencial redutor de consumo de bens naturais e o aumento da saúde de ecossistemas. Plataformas online, bem como o uso de softwares, páginas online, dentre outros, facilitam a visualização do consumo de matérias primas para o funcionamento das instituições, Dado a aplicação destas tecnologias, é possível acelerar o desenvolvimento de soluções para os desafios ambientais.</p>
+<p>A digitalização está impulsionando o surgimento de um novo modelo de gestão pública, baseado no uso de tecnologias limpas e sustentáveis. A Secretaria de Estado de Transformação Digital, bem como todos os órgãos estaduais do Rio de Janeiro, embarcaram nesta empreitada com o uso do Sistema Eletrônico de Informações (SEI-RJ).</p>
+<p>O SEI-RJ, ou Sistema Eletrônico de Informações do Rio de Janeiro, é uma plataforma digital desenvolvida para gerenciar de forma eficiente e segura processos administrativos e documentos eletrônicos no estado do Rio de Janeiro. Através do sistema, os órgãos públicos estaduais podem automatizar tarefas como a criação, edição, assinatura e tramitação de documentos, reduzindo a burocracia e agilizando a tomada de decisões. Essa ferramenta, baseada em um sistema já consolidado em outros tribunais, permite a integração de diversas áreas e a colaboração entre diferentes setores, tornando os processos mais transparentes e rastreáveis.</p>
+<p>Historicamente, a produção de material físico pelas instituições públicas é destaque no âmbito do acúmulo de material físico. Para isso, o SEI-RJ funciona como um caminho promissor para a preservação ambiental. Ao integrar tecnologias digitais em nossas vidas e em nossos negócios, podemos construir um futuro mais sustentável para as próximas gerações. </p>
+<p>Este trabalho tem por objetivo apresentar  a análise detalhada dos dados referentes ao SEI-RJ, de modo a demonstrar o potencial considerável de economia ambiental. Os cálculos apresentados revelam que a implementação e o uso contínuo da plataforma resultam em uma redução significativa no consumo de papel, energia e outros recursos naturais, além de minimizar a geração de resíduos. </p>
+<p>Os resultados aqui obtidos corroboram com a hipótese de que a digitalização dos processos administrativos, ao otimizar fluxos de trabalho e eliminar a necessidade de impressão, contribui de forma expressiva para a sustentabilidade ambiental. Conclui-se, portanto, que o SEI-RJ representa um instrumento eficaz para a promoção da economia circular e a construção de um futuro mais verde para o estado do Rio de Janeiro</p>
+<h2 id="metodologia">Metodologia</h2>
+<p>O cálculo da economia ambiental gerada pelo SEI-RJ exige a adoção de uma metodologia específica que leve em consideração as particularidades do sistema e os diversos fatores que influenciam o consumo de recursos. A quantificação dos benefícios ambientais de ferramentas digitais como o SEI apresenta desafios consideráveis, uma vez que envolve a estimativa de múltiplos indicadores e a consideração de diversos cenários.</p>
+<p>Inicialmente, a construção do modelo de cálculo deu-se a partir do processo de amostragem dos documentos disponíveis no sistema. O método amostral utilizado durante esta etapa consistiu no uso da Amostragem Aleatória Simples (AAS) para determinação do tamanho da amostra considerado representativo. Desta maneira, a coleta dos dados amostrais foi realizada a partir do levantamento de documentos disponíveis no próprio sistema. </p>
+<p>Após a análise documental, foi extraído o número total de páginas dos arquivos e o número médio de páginas por documento baixado com o uso do software Python. Com a utilização de ferramentas de inferência estatística, foi possível verificar o nível de confiança e significância da pesquisa. Sendo assim, a amostra utilizada foi de 875 processos extraídos no SEI-RJ, totalizando 24334 páginas, com uma média de páginas por arquivo de 27,81 páginas, com intervalo de confiança de 95% e com margem de erro de mais ou menos 5% para mais ou para menos.</p>
+<pre><code class="language-python">
+Total de arquivos PDF: 875
+Total de páginas: 24334
+Média de páginas por arquivo: 27.81
+
+</code></pre>
+<p>O cálculo de um intervalo de confiança é uma ferramenta estatística utilizada para estimar o intervalo dentro do qual se espera que um parâmetro populacional (como uma média ou uma proporção) esteja, com um certo nível de confiança, baseado em uma amostra extraída dessa população. A ideia central é fornecer uma faixa de valores plausíveis para o parâmetro, ao invés de um único valor específico, considerando a variabilidade da amostra. Todo o processo de cálculo foi realizado utilizando o software Python, conforme demonstrado abaixo.</p>
+<pre><code class="language-python">
+ADICIONAR CODIGO COM JUNIOR
+
+</code></pre>
+<p>No caso apresentado, o IC de 95% indica que há 95% de certeza de que os resultados encontrados na amostra de 875 processos do SEI-RJ refletem a realidade de toda a população de processos. Essa medida permite aos pesquisadores generalizar suas conclusões e ter mais confiança na representatividade dos dados.</p>
+<p>A escolha da amostra de 875 processos não foi aleatória. Através de cálculos estatísticos, os pesquisadores determinaram o tamanho ideal da amostra para garantir um nível de confiança e uma margem de erro aceitáveis. A margem de erro de 5% indica que o resultado obtido na amostra pode variar em até 5% para mais ou para menos em relação ao valor real da população. Essa precisão é essencial para tomar decisões embasadas e evitar generalizações equivocadas.  </p>
+<p>Basicamente, o cálculo do intervalo de confiança para uma proporção utiliza a seguinte fórmula:</p>
+<p><strong>IC = p ± z * √(p*(1-p)/n)</strong></p>
+<p>Sendo assim,</p>
+<p><strong>IC = 0,7 ± 1,96 * √(0,7*(1-0,7)/875) ≈ 0,7 ± 0,029</strong></p>
+<p>O intervalo de confiança foi de aproximadamente 0,671 a 0,729. Isso significa que temos 95% de confiança de que a verdadeira proporção de processos na população total do SEI-RJ está entre 67,1% e 72,9%. Ou seja, é possível afirmar com 95% de certeza que, se repetíssemos a pesquisa com outras amostras aleatórias do SEI-RJ, a proporção de processos encontrados em cada nova amostra estaria dentro desse intervalo.</p>
+<p>O intervalo de confiança é uma ferramenta importante porque oferece uma estimativa da incerteza associada à estimativa de um parâmetro. Ele é especialmente útil quando não é possível obter informações sobre toda a população, permitindo tirar conclusões sobre ela a partir de uma amostra. Além disso, ao invés de fornecer um único valor (como uma média pontual), o intervalo de confiança dá uma margem de erro, o que torna a inferência mais precisa e robusta, levando em conta a variabilidade dos dados. Em resumo, o intervalo de confiança serve para quantificar a precisão de uma estimativa e comunicar a incerteza envolvida na estimativa de um parâmetro populacional com base em dados amostrais.</p>
+<p>Com a finalização da análise dos dados amostrais, foi feito o cálculo dos ganhos ambientais do sistema considerando 4 tipos de recursos ambientais, que são indiretamente utilizados na rotina administrativa da gestão: árvores, litros de água, mil/kw de energia e kg de CO². Para cada um deles, foi associado um cálculo numérico específico, realizado por meio da ferramenta de BI Qlik Sense, que pode ser consultado por meio da tabela 1<sup id="fnref:1"><a class="footnote-ref" href="#fn:1">1</a></sup>. </p>
+<figure>
+<figcaption>
+<p>Tabela 1: Cálculo de ganhos ambientais por recurso ambiental</p>
+</figcaption>
+<table>
+<thead>
+<tr>
+<th>Árvores</th>
+<th>Litros de água</th>
+<th>Mil/Kw de energia</th>
+<th>Kg de CO²</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>(COUNT (PROCESSO) x 27.81) x 0.00014</td>
+<td>(COUNT (PROCESSO) x 27.81) x 0.5</td>
+<td>(COUNT (PROCESSO) x 27.81) x 0.04</td>
+<td>(COUNT (PROCESSO) x 27.81) x 0.00162</td>
+</tr>
+</tbody>
+</table>
+</figure>
+<p>Todos os dados coletados e analisados foram cuidadosamente integrados ao painel de Business Intelligence, proporcionando uma visualização clara e dinâmica dos ganhos ambientais alcançados. Ou seja, os dados de consumo de energia, geração de resíduos e emissões de gases do efeito estufa foram integrados ao painel BI, permitindo acompanhar em tempo real o desempenho ambiental de cada unidade de negócio.
+A utilização de testes de inferência estatística, como o que foi empregado nesta pesquisa, é crucial para garantir a robustez dos resultados. Esses testes permitem aos pesquisadores fazer inferências sobre a população a partir de uma amostra, quantificar a incerteza associada às estimativas e comparar diferentes grupos ou tratamentos. No contexto da pesquisa em questão, o teste escolhido provavelmente foi um teste de proporção, adequado para estimar a proporção de processos com determinada característica na população do SEI-RJ.</p>
+<h2 id="resultados">Resultados</h2>
+<p>Os resultados obtidos a partir da análise dos dados permitiram construir um panorama detalhado da performance ambiental do SEI-RJ. Essas informações foram cuidadosamente integradas a um painel de Business Intelligence (BI), que se tornou uma ferramenta estratégica para a visualização e o acompanhamento dos avanços em direção à sustentabilidade.
+O painel BI do SEI-RJ oferece uma interface intuitiva e personalizável, permitindo que os usuários explorem diversos indicadores ambientais de forma interativa. Através de gráficos, tabelas e mapas, é possível acompanhar em tempo real o consumo de recursos, a geração de resíduos, as emissões de gases do efeito estufa e outras métricas relevantes. Essa visualização clara e dinâmica facilita a identificação de tendências, a comparação de resultados e a tomada de decisões mais assertivas para a otimização dos processos e a redução do impacto ambiental.</p>
+<figure>
+<img alt="GanhosAmbientais" src="../../img/imagemRelatorioGanhosAmbientais.jpg" width="500" />
+
+<figcaption style="{font-size:8px}">Imagem 1. Painel SEI-RJ de ganhos ambientais.</figcaption>
+</figure>
+<p>Basicamente, o painel possibilita que os resultados ambientais possam ser compartilhados de forma clara e objetiva com gestores, colaboradores e stakeholders, promovendo a transparência e o engajamento em torno das iniciativas de sustentabilidade. Ao cruzar diferentes indicadores e identificar padrões, o painel BI auxilia na identificação de oportunidades de melhoria e na definição de metas mais ambiciosas.</p>
+<p>O acompanhamento em tempo real dos indicadores permite uma resposta rápida a eventuais desvios e a implementação de ações corretivas.O painel BI estimula uma cultura de melhoria contínua, incentivando a busca por soluções inovadoras e a otimização dos processos. Logo, o painel BI é um produto importante que contribui para uma gestão pública eficaz e ambientalmente responsável. </p>
+<h2 id="conclusao">Conclusão</h2>
+<p>Para consolidar os avanços e garantir a sustentabilidade dos resultados obtidos, é fundamental manter a alimentação contínua do painel BI com dados atualizados e precisos. Essa prática assegura que a ferramenta continue sendo um retrato fiel da realidade ambiental do Estado e um guia estratégico para a tomada de decisões.</p>
+<p>A disponibilização pública dos dados e a interação com órgãos de pesquisa e a sociedade civil são cruciais para fomentar a colaboração e a construção de soluções inovadoras. Ao compartilhar os resultados e estimular o debate, o SEI-RJ demonstra seu compromisso com a transparência e a participação cidadã.</p>
+<p>Em suma, o painel BI representa um marco na gestão ambiental do Estado, proporcionando um instrumento valioso para acompanhar os benefícios da transformação digital e fortalecer a construção de um futuro mais sustentável para todos.</p>
+<div class="footnote">
+<hr />
+<ol>
+<li id="fn:1">
+<p>Cálculo de ganhos ambientais por recurso ambiental. Fonte: ChatGPT&#160;<a class="footnote-backref" href="#fnref:1" title="Jump back to footnote 1 in the text">&#8617;</a></p>
+</li>
+</ol>
+</div>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Navegação no rodapé">
+        <a href="../avaliacaoChatbot/" class="btn btn-neutral float-left" title="Modelo de Avaliação de Chatbot."><span class="icon icon-circle-arrow-left"></span> Anterior</a>
+        <a href="../../Rotinas/extracaoTratamentoPainelSETD/" class="btn btn-neutral float-right" title="extracao_tratamento_painel_SETD.py">Seguinte <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Construído com <a href="https://www.mkdocs.org/">MkDocs</a> usando um <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a> provido por <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versões">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../avaliacaoChatbot/" style="color: #fcfcfc">&laquo; Anterior</a></span>
+    
+    
+      <span><a href="../../Rotinas/extracaoTratamentoPainelSETD/" style="color: #fcfcfc">Seguinte &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

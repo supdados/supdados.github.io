@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt_BR" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>extracao_tratamento_painel_SETD.py - Almanaque SETD</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "extracao_tratamento_painel_SETD.py";
+        var mkdocs_page_input_path = "Rotinas\\extracaoTratamentoPainelSETD.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/Ass-Digital_Transformacao-Digital_Negativo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" title="Digite o termo a ser buscado aqui" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Relatorios</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Relatorios/avaliacaoChatbot/">Modelo de Avaliação de Chatbot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Relatorios/relatorioCalculoGanhosAmbientais/">Relatório referente ao processo de cálculo de ganhos ambientais do SEI-RJ</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Rotinas</span></p>
+              <ul class="current">
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">extracao_tratamento_painel_SETD.py</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#objetivo">Objetivo</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#status">Status</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#funcionamento">Funcionamento</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#funcoes">Funções</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#download_google_sheet">download_google_sheet</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#remove_formatting">remove_formatting</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#save_selected_sheets">save_selected_sheets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#save_remaining_sheets">save_remaining_sheets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#concatenate_sheets">concatenate_sheets</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#determine_final_date">determine_final_date</a>
+    </li>
+    <li class="toctree-l3"><a class="reference internal" href="#generate_project_status">generate_project_status</a>
+    </li>
+        </ul>
+    </li>
+    </ul>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../minera%C3%A7%C3%A3oDOs/">pdfReader.py, v3.py e v4.py</a>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Menu de navegação em dispositivo móvel">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Almanaque SETD</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Documentos"></a></li>
+          <li class="breadcrumb-item">Rotinas</li>
+      <li class="breadcrumb-item active">extracao_tratamento_painel_SETD.py</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="extracao_tratamento_painel_setdpy">extracao_tratamento_painel_SETD.py</h1>
+<h2 id="objetivo">Objetivo</h2>
+<p>Retirar certos dados das planinhas dos projetos do SETD, tratando-as e disponibilizando as informações necessárias para os painéis interativos.</p>
+<h2 id="status">Status</h2>
+<p>Terminado.</p>
+<h2 id="funcionamento">Funcionamento</h2>
+<p>Para o funcionamento desta rotina são necessárias as seguintes bibliotecas:</p>
+<pre><code class="language-python">
+import requests
+import openpyxl
+import pandas as pd
+import time
+from datetime import datetime
+
+</code></pre>
+<p>O processo básico da rotina é feito a seguir, nela recupera-se a planilha unificada do SETD do Google Docs e gera-se duas novas planilhas "Oficial_Painel de Projetos SETD_Espec_CONCAT.xlsx" e "Oficial_Painel de Projetos SETD_Geral_CONCAT.xlsx", uma com informações gerais agregadas sobre os projetos do SETD e outra com informações mais específicas de cada projeto. Para explicação mais profunda acerca do funcionamento das funções aqui apresentadas veja a seção <a href="#funcoes">Funções</a>.</p>
+<p>Abaixo podemos ver o significado de cada uma das variáveis globais.</p>
+<ul>
+<li>
+<p><em>today</em>: variável que armazena o dia de hoje.</p>
+</li>
+<li>
+<p><em>SPREADSHEET_ID</em>: variável que armazena o identificador da planilha google.</p>
+</li>
+<li>
+<p><em>OUTPUT_FILE</em>: variável que armazena o caminho onde será guardado a planilha localmente.</p>
+</li>
+<li>
+<p><em>SELECTED_SHEETS</em>: variável que armazena as abas a serem recuperadas da planilha principal.</p>
+</li>
+</ul>
+<p>Para a aquisição do identificador da planilha google basta retirar a parte do url em negrito:</p>
+<p>https://docs.google.com/spreadsheets/d/<strong>IDENTIFICADORDAPLANILHA</strong>/edit?hl=pt-br&amp;gid=0#gid=0</p>
+<pre><code class="language-python">
+# Obter a data atual
+today = datetime.now().date()
+
+# Configurações
+SPREADSHEET_ID = '19KZNNdg-P7T-JLkPkPzMJ_pJ9pEDuJziA4R--K8XKWY'
+OUTPUT_FILE = 'Z:/Paineis_Qlik_SETD/Painel_SETD/Painel_SETD_bruto.xlsx'
+
+
+SELECTED_SHEETS = ['ASSCOM', 'ASSTEC', 'PRODERJ', 'CHEGAB', 'SUPGDR', 'SUPIM', 'SUPPAE']
+
+# Parte 1
+download_google_sheet(SPREADSHEET_ID, OUTPUT_FILE)
+
+time.sleep(1)  
+
+# Parte 2
+wb = openpyxl.load_workbook(OUTPUT_FILE, data_only=True)
+remove_formatting(wb)
+
+time.sleep(1) 
+
+# Parte 3
+xlsx = pd.ExcelFile(OUTPUT_FILE)
+save_selected_sheets(xlsx, 'Z:/Paineis_Qlik_SETD/Painel_SETD/Oficial_Painel de Projetos SETD_Geral.xlsx', SELECTED_SHEETS)
+save_remaining_sheets(xlsx, 'Z:/Paineis_Qlik_SETD/Painel_SETD/Oficial_Painel de Projetos SETD_Espec.xlsx')
+
+time.sleep(1)
+
+# Parte 4
+concatenate_sheets('Z:/Paineis_Qlik_SETD/Painel_SETD/Oficial_Painel de Projetos SETD_Geral.xlsx', 
+                   'Z:/Paineis_Qlik_SETD/Painel_SETD/Oficial_Painel de Projetos SETD_Geral_CONCAT.xlsx')
+
+concatenate_sheets('Z:/Paineis_Qlik_SETD/Painel_SETD/Oficial_Painel de Projetos SETD_Espec.xlsx', 
+                   'Z:/Paineis_Qlik_SETD/Painel_SETD/Oficial_Painel de Projetos SETD_Espec_CONCAT.xlsx')
+
+time.sleep(1)
+
+arquivo_geral = r'Z:/Paineis_Qlik_SETD/Painel_SETD/Oficial_Painel de Projetos SETD_Geral_CONCAT.xlsx'
+arquivo_especifico = r'Z:/Paineis_Qlik_SETD/Painel_SETD/Oficial_Painel de Projetos SETD_Espec_CONCAT.xlsx'
+resultado_geral, resultado_espec = generate_project_status(arquivo_geral, arquivo_especifico)
+print(f&quot;Arquivos salvos em {resultado_geral} e {resultado_espec}&quot;)
+
+</code></pre>
+<p>A rotina é constituida de 7 funções:</p>
+<ol>
+<li>
+<p><a href="#download_google_sheet">download_google_sheet</a></p>
+</li>
+<li>
+<p><a href="#remove_formatting">remove_formatting</a></p>
+</li>
+<li>
+<p><a href="#save_selected_sheets">save_selected_sheets</a></p>
+</li>
+<li>
+<p><a href="#save_remaining_sheets">save_remaining_sheets</a></p>
+</li>
+<li>
+<p><a href="#concatenate_sheets">concatenate_sheets</a></p>
+</li>
+<li>
+<p><a href="#determine_final_date">determine_final_date</a></p>
+</li>
+<li>
+<p><a href="#generate_project_status">generate_project_status</a></p>
+</li>
+</ol>
+<p>Abaixo explicaremos cada uma delas de maneira detalhada.</p>
+<h2 id="funcoes">Funções</h2>
+<h3 id="download_google_sheet"><em>download_google_sheet</em></h3>
+<p>A função <em>download_google_sheet</em> tem como objetivo baixar uma planilha google e salvá-la localmente.
+Ela recebe como parâmetro de entrada duas variáveis <em>spreadsheet_id</em> e <em>output_file</em>, representando a <em>string</em> do identificador da planilha e o caminho de onde o arquivo baixado deverá ser salvo respectivamente.</p>
+<p>Seu funcionamento ocorre ao primeiro adicionarmos <em>spreadsheet_id</em> à variável url assim montando o link da planilha, com ele, utilizando a biblioteca requests, realizamos uma requisição de download. A resposta dessa requisição é tratada de maneira que se houver erro seu código é impresso no terminal, caso contrário o conteúdo baixado é armazenado no local e com o nome especificado por <em>output_file</em>.</p>
+<pre><code class="language-python"># Baixar o arquivo
+def download_google_sheet(spreadsheet_id, output_file):
+    url = f'https://docs.google.com/spreadsheets/d/{spreadsheet_id}/export?format=xlsx'
+    response = requests.get(url)
+    assert response.status_code == 200, 'Erro ao baixar arquivo: status code {}'.format(response.status_code)
+    with open(output_file, 'wb') as f:
+        f.write(response.content)
+</code></pre>
+<h3 id="remove_formatting"><em>remove_formatting</em></h3>
+<p>A função <em>remove_formatting</em> tem como objetivo formatar a planilha passada no parâmetro <em>workbook</em> do tipo <em>openpyxl.workbook.Workbook</em>.
+Seu funcionamento ocorre ao percorremos todas as abas da planilha no primeiro loop e em todas as suas linhas no segundo retirando a formatação ao usarmos o método <em>iter_rows(values_only=True)</em>. No final apenas salvamos a planilha no local indicado pela variável global <em>OUTPUT_FILE</em>.</p>
+<pre><code class="language-python"># Retirar formatação da planilha
+def remove_formatting(workbook):
+    for sheet in workbook:
+        for row in sheet.iter_rows(values_only=True):
+            pass  
+    workbook.save(OUTPUT_FILE)
+</code></pre>
+<h3 id="save_selected_sheets"><em>save_selected_sheets</em></h3>
+<p>A função <em>save_selected_sheets</em> tem como objetivo separar certas abas de uma planilha e salvá-la em outra planilha. Ela recebe 3 parâmetros de entrada <em>xlsx</em>, <em>output_file</em> e <em>sheets</em> onde o primeiro é a planilha onde estão as abas a serem separadas no formato <em>xlsx</em>, o segundo é uma <em>string</em> com caminho onde deverá ser salvo a nova planilha e o terceiro um <em>array</em> de <em>strings</em> com os nomes das abas selecionadas para separação.</p>
+<p>Sua execução começa ao criarmos um objeto de escrita de um arquivo excel com o nome de <em>writer</em>, isso efetivamente cria o arquivo excel localmente. Seguindo temos um loop onde percorremos todos os nomes em <em>sheets</em>, salvando elas dentro da planilha criada anteriormente.</p>
+<pre><code class="language-python"># Escolher apenas as &quot;folhas&quot; necessárias do arquivo bruto
+def save_selected_sheets(xlsx, output_file, sheets):
+    with pd.ExcelWriter(output_file) as writer:
+        for sheet in sheets:
+            df = pd.read_excel(xlsx, sheet)
+            df.to_excel(writer, sheet_name=sheet, index=False)
+</code></pre>
+<h3 id="save_remaining_sheets"><em>save_remaining_sheets</em></h3>
+<p>A função <em>save_remaining_sheets</em>, análoga àquela anteriormente explicada, salva em uma planilha local as abas restantes da planilha original. Ela recebe 2 parâmetros de entrada, <em>xlsx</em> e <em>output_file</em>, sendo eles um arquivo no formato <em>xlsx</em> e uma <em>string</em> com o local do arquivo a ser gerado.</p>
+<p>Seu funcionamento ocorre ao pularmos as 10 primeiras abas da planilha(as abas separadas pela função save_selected_sheets) e armazenando as abas restantes na planilha <em>output_file</em>.</p>
+<pre><code class="language-python"># Ignorar as 10 primeiras sheets
+def save_remaining_sheets(xlsx, output_file):
+    with pd.ExcelWriter(output_file) as writer:
+        for i in range(len(xlsx.sheet_names)):
+            if i &lt; 10:
+                continue
+            else:
+                df = pd.read_excel(xlsx, xlsx.sheet_names[i])
+                df.to_excel(writer, sheet_name=xlsx.sheet_names[i], index=False)
+</code></pre>
+<h3 id="concatenate_sheets"><em>concatenate_sheets</em></h3>
+<p>A função <em>concatenate_sheets</em> concatena as abas de um arquivo excel em uma única aba. Ela recebe dois parâmetros de entrada, <em>input_file</em> e <em>output_file</em> ambas <em>strings</em> com o caminho para arquivos excel, sendo o primeiro para um arquivo já existente e o segundo para a criação de um novo.</p>
+<p>Seu funcionamento ocorre primeiro abrindo o arquivo <em>input_file</em> depois criando um <em>array</em> com o conteúdo das diferentes abas do arquivo ao final é concatenado e salvo todas as abas em <em>output_file</em>.</p>
+<pre><code class="language-python"># Concatenar tudo para uma única folha
+def concatenate_sheets(input_file, output_file):
+    xlsx = pd.ExcelFile(input_file)
+    dfs = [xlsx.parse(sheet) for sheet in xlsx.sheet_names]
+    df_total = pd.concat(dfs, ignore_index=True)
+    df_total.to_excel(output_file, index=False)
+</code></pre>
+<h3 id="determine_final_date"><em>determine_final_date</em></h3>
+<p>A função <em>determine_final_date</em> recebe 3 parâmetros de entrada, <em>realizada</em>, <em>reprogramada</em> e <em>prevista</em>, sendo elas de qualquer tipo, em nosso caso passamos <em>strings</em>.</p>
+<p>Ela tem como objetivo retornar o primeiro valor não nulo dos 3 parâmetros iniciais na ordem: <em>realizada</em>, <em>reprogramada</em> e <em>prevista</em>. Se todas forem vazias, retorna <em>None</em></p>
+<pre><code class="language-python">def determine_final_date(realizada, reprogramada, prevista):
+    if pd.notna(realizada):
+        return realizada
+    elif pd.notna(reprogramada):
+        return reprogramada
+    elif pd.notna(prevista):
+        return prevista
+    else:
+        return None
+</code></pre>
+<h3 id="generate_project_status"><em>generate_project_status</em></h3>
+<p>A função <em>generate_project_status</em> tem como objetivo reformular 2 planilhas com as informações dos projetos do SETD para atender as necessidades dos paineis informativos, sendo uma com informações específicas e outra com informações gerais dos projetos. Ela recebe 2 parâmetros de entrada, <em>file_geral</em> e <em>file_especifico</em>, o primeiro sendo o caminho para a planilha geral de projetos e o segundo para a planilha de projetos específicos.</p>
+<p>Por ser uma função relativamente extensa faremos a explicação por partes.</p>
+<p>Essa primeira parte faz o tratamento dos dados e o agrupamento das planilhas passadas como argumento, eliminando processos marcados como excluídos ou suspensos. Depois há uma filtragem das planilhas de projetos específicos(<em>df_espec</em>) para restarem apenas aqueles projetos que constam na planilha dos projetos gerais(<em>df_geral</em>), seguido da contagem do total de projeto e a contagem daqueles que tem o status de concluído, guardando esses dois valores em um novo <em>DataFrame</em> chamado <em>df_status_projetos</em>. Posteriormente, adiciona-se uma coluna em <em>df_status_projetos</em> chamada "Projeto Concluído", onde marca-se aquele projeto concluído ou não com os valores "VERDADEIRO" e "FALSO".</p>
+<p>Com a tabela <em>df_status_projetos</em> definida, realiza-se uma mesclagem desta com <em>df_geral</em> baseada nos identificadores dos projetos, definindo os valores nulos como 0 ou "FALSO".</p>
+<pre><code class="language-python">
+def generate_project_status(file_geral, file_especifico):
+    df_geral = pd.read_excel(file_geral, engine='openpyxl')
+
+    # Excluindo as linhas com STATUS &quot;Suspenso&quot; ou &quot;Excluído&quot;
+    df_geral = df_geral[~df_geral['STATUS'].isin(['Suspenso', 'Excluído'])]
+    df_espec = pd.read_excel(file_especifico, engine='openpyxl')
+
+    # Mantendo apenas as linhas no df_espec que têm correspondência no df_geral
+    df_espec = df_espec[df_espec[&quot;Nº PROJETO&quot;].isin(df_geral[&quot;Nº&quot;])]
+
+    etapas_total = df_espec[df_espec[&quot;DESCRIÇÃO ETAPA&quot;].notna()].groupby('Nº PROJETO').size()
+    etapas_concluidas = df_espec[df_espec[&quot;CONCLUÍDA&quot;] == &quot;Sim&quot;].groupby('Nº PROJETO').size()
+
+    df_status_projetos = pd.DataFrame({
+        'Total de Etapas': etapas_total,
+        'Etapas Concluídas': etapas_concluidas
+    }).fillna(0)
+
+    df_status_projetos['Projeto Concluído'] = (df_status_projetos['Total de Etapas'] == df_status_projetos['Etapas Concluídas']).replace({True: 'VERDADEIRO', False: 'FALSO'})
+
+    df_geral = df_geral.merge(df_status_projetos, left_on=&quot;Nº&quot;, right_index=True, how=&quot;left&quot;)
+    df_geral[['Total de Etapas', 'Etapas Concluídas', 'Projeto Concluído']] = df_geral[['Total de Etapas', 'Etapas Concluídas', 'Projeto Concluído']].fillna({&quot;Total de Etapas&quot;: 0, &quot;Etapas Concluídas&quot;: 0, &quot;Projeto Concluído&quot;: 'FALSO'})
+
+</code></pre>
+<p>Em seguida adiciona-se duas colunas em <em>df_espec</em> as colunas 'Data Início (Final)' e 'Data Fim (Final)' com o auxílio da função <a href="#determine_final_date"><em>determine_final_date</em></a> adicionando as datas relevantes em seus espaços específicos, com esses dados preenchidos realizamos a conta de duração do projeto e guardamos em uma coluna de nome "Dias de Duração".</p>
+<pre><code class="language-python">
+    df_espec['Data Início (Final)'] = df_espec.apply(lambda row: determine_final_date(row['DATA INÍCIO (realizada)'], row['DATA INÍCIO (reprogramada)'], row['DATA INÍCIO (prevista)']), axis=1)
+    df_espec['Data Fim (Final)'] = df_espec.apply(lambda row: determine_final_date(row['DATA FIM (realizada)'], row['DATA FIM (reprogramada)'], row['DATA FIM (prevista)']), axis=1)
+
+    df_espec[&quot;Data Início (Final)&quot;] = pd.to_datetime(df_espec[&quot;Data Início (Final)&quot;], errors='coerce')
+    df_espec[&quot;Data Fim (Final)&quot;] = pd.to_datetime(df_espec[&quot;Data Fim (Final)&quot;], errors='coerce')
+
+    df_espec[&quot;Dias de Duração&quot;] = (df_espec[&quot;Data Fim (Final)&quot;] - df_espec[&quot;Data Início (Final)&quot;]).dt.days
+
+    mask_erro = (df_espec[&quot;Data Início (Final)&quot;].isnull() &amp; df_espec[&quot;Data Fim (Final)&quot;].notnull()) | \
+            (df_espec[&quot;Data Início (Final)&quot;].notnull() &amp; df_espec[&quot;Data Fim (Final)&quot;].isnull())
+    df_espec.loc[mask_erro, &quot;Dias de Duração&quot;] = &quot;ERRO&quot;
+
+</code></pre>
+<p>Com essas informações especificadas em <em>df_espec</em>, é feito a verificação o estado do projeto atráves da função <em>determine_due_status</em> podendo ter 3 valores "None" para se o projeto já ter sido concluído, "atrasado" ou "no prazo", essa informação é guardada na coluna "Status prazo". Depois agrupa-se na variável <em>project_status</em> os projetos pelos seus identificadores e define-se o status geral do projeto, sendo salva essa informação em <em>df_geral</em> com o nome "Status Geral Prazo".</p>
+<pre><code class="language-python">
+    # Adicionando a coluna 'Status Prazo' com a lógica especificada
+    def determine_due_status(row):
+        if pd.isna(row['Data Fim (Final)']) or pd.isna(row['CONCLUÍDA']):
+            return None  # Campo em branco se alguma das colunas estiver vazia
+        elif row['Data Fim (Final)'].date() &lt; today and row['CONCLUÍDA'] == &quot;Não&quot;:
+            return &quot;atrasado&quot;
+        else:
+            return &quot;no prazo&quot;
+
+    df_espec['Status Prazo'] = df_espec.apply(determine_due_status, axis=1)
+
+    # Agrupe a coluna &quot;Status Prazo&quot; do df_espec por &quot;Nº PROJETO&quot; e determine o status geral
+    def project_due_status(group):
+    # Filtrando apenas valores que não são None
+        valid_statuses = [status for status in group if pd.notna(status)]
+
+    # Se não houver nenhum status válido, retorna None
+        if not valid_statuses:
+            return None
+    # Se todos os valores válidos forem &quot;no prazo&quot;, retorna &quot;no prazo&quot;
+        elif all(status == &quot;no prazo&quot; for status in valid_statuses):
+            return &quot;no prazo&quot;
+    # Se houver algum valor &quot;atrasado&quot; entre os valores válidos, retorna &quot;atrasado&quot;
+        else:
+            return &quot;atrasado&quot;
+
+
+    project_status = df_espec.groupby('Nº PROJETO')['Status Prazo'].apply(project_due_status)
+
+# Junte o resultado com o df_geral
+    df_geral = df_geral.merge(project_status, left_on='Nº', right_index=True, how='left')
+    df_geral.rename(columns={'Status Prazo': 'Status Geral Prazo'}, inplace=True)
+
+</code></pre>
+<p>Por fim, acumula-se a duração de cada etapa do projeto na variável <em>total_dias_por_projeto</em> e o valor total de cada processo em <em>total_dias_etapas_concluidas</em>, a fim de realizar a proporção de cada etapa do projeto em relação ao seu todo, essa estatística é guardada na coluna "% Concluído" na tabela <em>df_geral</em>.</p>
+<p>Por fim escrevos o <em>df_geral</em> e o <em>df_espec</em>, em <em>output_geral</em> e <em>output_espec</em> devolvendo esses caminhos como retorno da função.</p>
+<pre><code class="language-python">
+    df_espec['Dias de Duração Float'] = df_espec['Dias de Duração'].apply(convert_to_float)
+    total_dias_por_projeto = df_espec.groupby('Nº PROJETO')['Dias de Duração Float'].sum()
+    df_etapas_concluidas = df_espec[df_espec[&quot;CONCLUÍDA&quot;] == &quot;Sim&quot;]
+    total_dias_etapas_concluidas = df_etapas_concluidas.groupby('Nº PROJETO')['Dias de Duração Float'].sum()
+    df_geral['% Concluído'] = df_geral['Nº'].apply(lambda x: (total_dias_etapas_concluidas.get(x, 0) / (total_dias_por_projeto.get(x, 1))) if total_dias_por_projeto.get(x, 1) != 0 else 0)
+
+    output_geral = r'Z:/Paineis_Qlik_SETD/Painel_SETD/Oficial_Painel de Projetos SETD_Geral_CONCAT.xlsx'
+    output_espec = r'Z:/Paineis_Qlik_SETD/Painel_SETD/Oficial_Painel de Projetos SETD_Espec_CONCAT.xlsx'
+    df_geral.to_excel(output_geral, index=False, engine='openpyxl')
+    df_espec.drop(columns=['Dias de Duração Float'], inplace=True)
+    df_espec.to_excel(output_espec, index=False, engine='openpyxl')
+
+    return output_geral, output_espec
+
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Navegação no rodapé">
+        <a href="../../Relatorios/relatorioCalculoGanhosAmbientais/" class="btn btn-neutral float-left" title="Relatório referente ao processo de cálculo de ganhos ambientais do SEI-RJ"><span class="icon icon-circle-arrow-left"></span> Anterior</a>
+        <a href="../minera%C3%A7%C3%A3oDOs/" class="btn btn-neutral float-right" title="pdfReader.py, v3.py e v4.py">Seguinte <span class="icon icon-circle-arrow-right"></span></a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Construído com <a href="https://www.mkdocs.org/">MkDocs</a> usando um <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a> provido por <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versões">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../../Relatorios/relatorioCalculoGanhosAmbientais/" style="color: #fcfcfc">&laquo; Anterior</a></span>
+    
+    
+      <span><a href="../minera%C3%A7%C3%A3oDOs/" style="color: #fcfcfc">Seguinte &raquo;</a></span>
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>

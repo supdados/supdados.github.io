@@ -1,0 +1,656 @@
+<!DOCTYPE html>
+<html class="writer-html5" lang="pt_BR" >
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+      <link rel="shortcut icon" href="../../img/favicon.ico" />
+    <title>pdfReader.py, v3.py e v4.py - Almanaque SETD</title>
+    <link rel="stylesheet" href="../../css/theme.css" />
+    <link rel="stylesheet" href="../../css/theme_extra.css" />
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
+        <link href="../../style.css" rel="stylesheet" />
+    
+      <script>
+        // Current page data
+        var mkdocs_page_name = "pdfReader.py, v3.py e v4.py";
+        var mkdocs_page_input_path = "Rotinas\\minera\u00e7\u00e3oDOs.md";
+        var mkdocs_page_url = null;
+      </script>
+    
+    <!--[if lt IE 9]>
+      <script src="../../js/html5shiv.min.js"></script>
+    <![endif]-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/highlight.min.js"></script>
+      <script>hljs.highlightAll();</script> 
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side stickynav">
+    <div class="wy-side-scroll">
+      <div class="wy-side-nav-search">
+          <a href="../..">
+          <img src="../../img/Ass-Digital_Transformacao-Digital_Negativo.png" class="logo" alt="Logo"/>
+        </a><div role="search">
+  <form id ="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+      <input type="text" name="q" placeholder="Buscar documentos" aria-label="Buscar documentos" title="Digite o termo a ser buscado aqui" />
+  </form>
+</div>
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="Menu de navegação">
+              <ul>
+                <li class="toctree-l1"><a class="reference internal" href="../..">Home</a>
+                </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Relatorios</span></p>
+              <ul>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Relatorios/avaliacaoChatbot/">Modelo de Avaliação de Chatbot.</a>
+                  </li>
+                  <li class="toctree-l1"><a class="reference internal" href="../../Relatorios/relatorioCalculoGanhosAmbientais/">Relatório referente ao processo de cálculo de ganhos ambientais do SEI-RJ</a>
+                  </li>
+              </ul>
+              <p class="caption"><span class="caption-text">Rotinas</span></p>
+              <ul class="current">
+                  <li class="toctree-l1"><a class="reference internal" href="../extracaoTratamentoPainelSETD/">extracao_tratamento_painel_SETD.py</a>
+                  </li>
+                  <li class="toctree-l1 current"><a class="reference internal current" href="#">pdfReader.py, v3.py e v4.py</a>
+    <ul class="current">
+    <li class="toctree-l2"><a class="reference internal" href="#objetivo">Objetivo</a>
+    </li>
+    </ul>
+                  </li>
+              </ul>
+      </div>
+    </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+      <nav class="wy-nav-top" role="navigation" aria-label="Menu de navegação em dispositivo móvel">
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../..">Almanaque SETD</a>
+        
+      </nav>
+      <div class="wy-nav-content">
+        <div class="rst-content"><div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../.." class="icon icon-home" aria-label="Documentos"></a></li>
+          <li class="breadcrumb-item">Rotinas</li>
+      <li class="breadcrumb-item active">pdfReader.py, v3.py e v4.py</li>
+    <li class="wy-breadcrumbs-aside">
+    </li>
+  </ul>
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+            <div class="section" itemprop="articleBody">
+              
+                <h1 id="pdfreaderpy-v3py-e-v4py">pdfReader.py, v3.py e v4.py</h1>
+<h2 id="objetivo">Objetivo</h2>
+<p>Realizar a extração dos decretos relacionados a uma seção do Diário Oficial do Estado do Rio de Janeiro. As ferramentas de leitura de pdf extraem o texto reduzindo a dimensão da informação deste de linhas e colunas para apenas uma coluna com cada paragrafo identidicado e suas coordenadas da pagina, assim devido a formatação do Diário oficial temos erros durante esse redimensionamento causando a necessidade destas rotinas.</p>
+<p>Para esse fim foi reazlizado o desenvolvimento de duas maneiras diferentes de se extrair as informações desejadas. A primeira foi <em>pdfReader</em> onde primeiro tentamos identificar a qual tipo de coluna o parágrafo lido pertence para depois verificar se sua posição no documento esta correta ou não. A segunda foi <em>v4.py</em> que funciona de maneira mais simples a custo de ter várias passagens por pagina do documento. </p>
+<p>O desenvolvimento de ambas as funções foi interrompido devido a possível disponibilização do banco de dados da Secretária de Estado da Casa Cívil e extensão do prazo final do PDA(Plano de Dados Abertos) do dia 06/06/2025 para 06/09/2025.</p>
+<ol>
+<li><a href="#pdfReader.py">pdfReader.py e v3.py</a></li>
+<li><a href="#v4py">v4.py</a></li>
+</ol>
+<h1 id="pdfreaderpy-e-v3py">pdfReader.py e v3.py</h1>
+<h2 id="status">Status</h2>
+<p>Em desenvolvimento.</p>
+<h2 id="funcionamento">Funcionamento</h2>
+<p>Ambos os códigos tem as mesmas rotinas, mas durante o desenvolvimento da versão parametrizada(<em>pdfReader.py</em>) houve a necessidade de se expandir o escopo, assim surgiu <em>v3.py</em> cujo funcionamento é identico ao seu antecessor mas sem a necessidade dos parâmetros identificadores. Assim ambos estão sendo explicados na mesma seção.</p>
+<p>O desenvolvimento foi interrompido antes da resolução dos seguintes problemas:</p>
+<ol>
+<li>
+<p>alta especificidade do código (Teria que mapear todas as possibilidades de arranjo das colunas no Diário Oficial).</p>
+</li>
+<li>
+<p>Adicionar os casos de erro faltante no processo de identificação.</p>
+</li>
+</ol>
+<p>A seguir a explicação de sua rotina.</p>
+<p>Para o funcionamento desta rotina são necessárias as seguintes bibliotecas:</p>
+<pre><code class="language-python">
+import re
+import json
+import tqdm
+import pymupdf
+
+</code></pre>
+<p>A rotina se baseia em recuperar os Atos Oficiais presentes no Diário Oficial(DO), separando por seus "Ids" a fim de utilizarmo-os para aplicações futuras. Ela apresenta 1 rotina principal divida em 3 partes, sendo 2 delas subrotinas.</p>
+<pre><code class="language-python">
+#Chamada Principal
+retirar(CAMINHOPARAODO, VERBOSE)
+
+</code></pre>
+<p>A rotina é constituida de 3 Funções:</p>
+<ol>
+<li>
+<p><a href="#retirar">Recuperação e arrumação dos blocos do documento</a></p>
+</li>
+<li>
+<p><a href="#defColunas">Definição de colunas</a></p>
+</li>
+<li>
+<p><a href="#sortColunas">Checagem das colunas</a></p>
+</li>
+</ol>
+<p>Abaixo explicaremos cada uma delas de maneira detalhada.</p>
+<h2 id="funcoes">Funções</h2>
+<h3 id="retirar">retirar</h3>
+<pre><code class="language-python">
+def retirar(filepath, verbose=False)
+
+</code></pre>
+<p>A função <em>retirar</em> é a função principal de <em>pdfReader.py</em>, nela é realizado toda a lógica de retirada e tratamento do texto do DO com auxílio das funções <em>defColunas</em> e <em>sortColunas</em>. É de responsabilidade da função <em>retirar</em> a retirada do texto contido no pdf do DO, a separação das linhas irrelevantes daquelas interessantes e o particionamento dos Atos Oficiais por seus "Ids". Ela recebe 2 argumentos, o primeiro <em>filepath</em> é o caminho para o arquivo pdf a ser lido e o segundo <em>verbose</em> serve para habilitar a impressão das etapas a fim de realização de correções no código, este último tem valor <em>False</em> como padrão.</p>
+<pre><code class="language-python">
+    nomeDir = &quot;DOsProcessados/Decretos/&quot;+filepath.split(&quot;/&quot;)[-1].split(&quot;.&quot;)[0]
+    if not os.path.isdir(&quot;DOsProcessados&quot;):
+        os.mkdir(&quot;DOsProcessados&quot;)
+        os.mkdir(&quot;DOsProcessados/Decretos&quot;)
+        os.mkdir(nomeDir)
+    elif not os.path.isdir(nomeDir):
+        os.mkdir(nomeDir)
+
+
+    doc = pdf.open(filepath)
+    arq = []
+    for i in doc:
+        for j in i.get_text(&quot;blocks&quot;):
+            arq.append(j)
+
+    achei = False
+    pattern = r'(\\x[01][0-9A-Fa-f]|\\ufffd)' ## remover caracteres binarios do documento
+    par = 0
+    pagina = 0
+    acc = []
+    paragrafo= &quot;&quot;
+    valor = False
+    for lines in tqdm.tqdm(range(len(arq))):
+        if par &lt; arq[lines][-2]:
+            par = arq[lines][-2]
+        else:
+            par = arq[lines][-2]
+            pagina+=1
+        if (pagina == 1 and arq[lines][-2]&lt;19) or (pagina == 2 and arq[lines][-2]&lt;18) or (arq[lines][4]==&quot;&quot;) or (len(arq[lines][4])&lt;=2):
+            continue 
+
+        if &quot;&quot;.join(arq[lines][4].split(&quot;\n&quot;)) in [&quot;Solicite seu or\u00e7amento:   &quot;, &quot;Decreto Estadual 47.364/2020&quot;, &quot;OBRIGATORIEDADE DE CONSULTA \u00c0 IMPRENSA OFI-CIAL NAS CONTRATA\u00c7\u00d5ES DE SERVI\u00c7OS GR\u00c1FI-COS PELA ADMINISTRA\u00c7\u00c3O DIRETA E INDIRETA.&quot;, &quot;2,00R$&quot;, &quot;Livrosnovosde&quot;, &quot;at\u00e9 9,00&quot;, &quot;programamaisleitura&quot;, &quot;maisleitura@ioerj.rj.gov.br&quot;, &quot;Ler \u00e9 o maior barato!&quot;, &quot;programamaisleituramaisleitura@ioerj.rj.gov.br&quot;, &quot; acesso \u00e0 leitura.acesso \u00e0 leitura.&quot;, &quot;Endere\u00e7os&quot;]:
+            continue
+
+        if re.search(pattern,arq[lines][4].encode(&quot;unicode_escape&quot;).decode()):
+            continue
+        if &quot;O VALOR DA\nSEGURANÇA&quot; in arq[lines][4]:
+                fraseSem = &quot;&quot;
+                booleanValor = False
+                for frase in arq[lines][4].split(&quot;\n&quot;):
+                    if frase != &quot;O VALOR DA&quot; and not booleanValor:
+                        fraseSem += frase + &quot;\n&quot;
+                    elif frase == &quot;O VALOR DA&quot; or booleanValor:
+                        booleanValor = True
+                        paragrafo += frase
+                aux = list(arq[lines])
+                aux[4]=fraseSem
+                aux[-1] = pagina
+                acc.append(tuple(aux))
+                valor = True
+                continue
+        elif valor:
+            if acc == &quot;O VALOR DASEGURANÇAPUBLICOUNAIMPRENSA,ÉOFICIAL&quot;:
+                valor = False
+                paragrafo = &quot;&quot;
+            else:
+                paragrafo+=arq[lines][4].split(&quot;\n&quot;)[0]
+        if re.search(r'ATOS DO PODER EXECUTIVO\n', arq[lines][4]):
+            achei = True
+
+        if re.search(r'Despachos do Governador\n', arq[lines][4]) or re.search(r'Secretaria de Estado da Casa Civil\n', arq[lines][4]):
+            achei = False
+            break
+        elif achei:
+            aux = list(arq[lines])
+            aux[-1] = pagina
+            acc.append(tuple(aux))
+
+</code></pre>
+<p>A primeira parte do código é responsável pela filtragem dos parágrafos irrelevantes do documento, ele procura no texto parágrafos chave que são repetidos em imagens, tabelas e outros itens irrelevantes para nosso processamento e retira-os a fim de evitar a poluição do texto do Atos, além de guardar a página em que o parágrafo se encontra já que esse contexto é perdido durante a leitura. O pymupdf realiza a leitura do pdf e retorna tuplas com a seguinte postura: <em>[ x0 , y0, x1, y1 , PARAGRAFOLIDO, NUMPARAGRAFOPAG, TIPO]</em>, onde x0 e y0 são os pontos de início do parágrafo, x1, y1 são os pontos finais, PARAGRAFOLIDO é o texto bruto do Ato e NUMPARAGRAFOPAG é o número de aparecimento do parágrafo na página, salvamos essa informação em uma variável chamada <em>arq</em>. Após o salvamento, percorremos <em>arq</em> procurando os parágrafos a serem eliminados e sobrescrevendo a variável TIPO com a página ao qual o parágrafo pertence.</p>
+<pre><code class="language-python">    acumulador = &quot;&quot;
+    ultimo = &quot;&quot;
+    colunas = defColunas(acc)
+    colunas = sortColunas(colunas,&quot;ATOS DO PODER EXECUTIVO\n&quot;)
+
+    procurar = True
+    for i in colunas:    
+        if i[2][4] != &quot;ATOS DO PODER EXECUTIVO\n&quot; and procurar:
+            print(i[2])
+            continue
+        procurar = False
+
+        aux = re.search(r'Id: [0-9]*\n?', i[2][4])
+        if aux :
+            if len(i[2][4])&gt; aux.span()[1]:
+                acumulador+=i[2][4][0:aux.span()[1]]
+                out = open(nomeDir+&quot;/&quot;+i[2][4][aux.span()[0]+3:aux.span()[1]].rstrip(&quot;\n&quot;)+&quot;.txt&quot;, &quot;wb&quot;)
+                out.write(acumulador.encode(&quot;utf-8&quot;))
+                out.close()
+                acumulador = i[2][4][aux.span()[1]:]
+            else: 
+                acumulador += i[2][4]
+                out = open(nomeDir+&quot;/&quot;+i[2][4][aux.span()[0]+3:aux.span()[1]].lstrip(&quot; &quot;).rstrip(&quot;\n&quot;)+&quot;.txt&quot;, &quot;wb&quot;)
+                out.write(acumulador.encode(&quot;utf-8&quot;))
+                acumulador = &quot;&quot;
+        else:
+            acumulador+=i[2][4]
+</code></pre>
+<p>Na segunda parte do código temos a utilização das funções <em>defColuns</em> e <em>sortColuns</em>, elas realizam as rotinas de definição do tipo de coluna sendo utilizado pelo parágrafo e ordenação dos parágrafos de acordo com as coordenadas respectivamente, explicaremos o funcionamento de cada uma dessas funções mais adiante no documento. Após o retorno destas funções realizamos a separação dos Atos, essa separação é feita primeiro ignorando tudo aquilo identificado como sendo antecedente ao título Atos do Poder Executivo e em seguida acumulando os parágrafos restantes até encontrarmos um "Id", parte onde salvamos todos esses acumulados em um arquivo de nome igual ao "Id" do ato.</p>
+<h3 id="defcolunas">defColunas</h3>
+<p>A função <em>defColunas</em> tem como objetivo identificar a qual tipo de coluna o parágrafo pertence. Essa categorização é feita utilizando os parâmetros presentes na tupla salva em <em>arq</em>, retornando uma nova tupla do estilo <em>[ TIPO, METRICAS, TUPLAORIGINAL ]</em> onde TIPO é a classificação da coluna, METRICAS são as métricas do parágrafo, sendo elas <em>[ TAMANHO, CENTRO, y0 e y1 ]</em> onde o <em>TAMANHO</em> é a largura do parágrafo, <em>CENTRO</em> é onde o paragrafo esta centrado e  y0, y1 são o ponto de inicio e final da altura do paragrafo, e <em>TUPLAORIGINAL</em> é a tupla anteriormente salva em <em>arq</em>. Ele recebe 2 parâmetros de entrada, o array a ser classificado e o verbose para habilitar a impressão dos debugs.</p>
+<pre><code class="language-python">def defColunas(paragrafos, verbose=False):
+    import re
+    colunas = [[0,[],()] for _ in range(len(paragrafos))]
+    # 1 = coluna 1/3 
+    # 2 = coluna 2/3 
+    # 3 = coluna 3/3 
+    # 4 = coluna 1/2 
+    # 5 = coluna 2/2 
+    # 6 = coluna 1/1 
+    # 9 = id coluna 3/3 
+    #10 = coluna 1 2/3
+    #11 = coluna 2 2/3
+
+    def metricas(tupla):
+        return [ tupla[2]-tupla[0], (tupla[2]-tupla[0])/2 + tupla[0], tupla[1], tupla[3]]
+
+    colunaUnica=False
+    anexo = 0
+
+    for i in range(len(paragrafos)):
+        colunas[i][1] = metricas(paragrafos[i])
+        colunas[i][2] = paragrafos[i]
+        regex = re.search(r'ANEXO ?([IVXL]+|\u00daNICO?|.*)', paragrafos[i][4])
+        if regex and regex.span()[0] == 0:
+            anexo+=1
+        if colunas[i][1][0] &gt;341 and not re.search(r'Id: [0-9]*\n?', paragrafos[i][4]):
+            if colunas[i][1][1] &lt; 480:
+                colunaUnica = True
+                colunas[i][0] = 6
+            else:
+                colunas[i][0] = 11
+        elif colunas[i][1][0]&gt;228 and not re.search(r'Id: [0-9]*\n?', paragrafos[i][4]):
+            if paragrafos[i][0] &gt; 400:
+                colunas[i][0] = 5 if colunas[i][1][1] &gt; 530 else  11
+            else:
+                colunas[i][0] = 4  
+
+</code></pre>
+<p>A primeira parte do código trata daqueles parágrafos com grande largura, já que apenas alguns possuem essa característica. observamos a largura do parágrafo(<em>colunas[i][1][0]</em>) e sua centralidade(<em>colunas[i][1][0]</em>) assim conseguimos separar os parágrafos de coluna única(6), de duas colunas(4 e 5) por página ou colunas de extensão duplas(10 e 11) também nesse último caso de qual lado está o parágrafo.</p>
+<pre><code class="language-python">        else:
+            if re.search(r'Id: [0-9]*\n?', paragrafos[i][4]):
+                if colunas[i][1][1] &lt; 279:
+                    colunas[i][0] = 1
+                elif colunas[i][1][1] &lt; 520 and colunas[i][1][0]&lt;228:
+                    if 400&lt;paragrafos[i][2]&lt;488:
+                        colunas[i][0] = 10
+                        k=1
+                        while i-k &gt; 0 and anexo &gt; 0:
+                            colunas[i-k][0] = 10
+                            regex = re.search(r'ANEXO ?([IVXL]+|\u00daNICO?|.*)', paragrafos[i-k][4])
+                            if (regex and regex.span()[0]==0 ):
+                                anexo-=1
+                            k+=1
+                        colunaUnica = False
+                    if paragrafos[i][2]&lt;400:
+                        colunas[i][0] = 4
+                        k=1
+                        while i-k &gt; 0 and anexo &gt; 0:
+                            colunas[i-k][0] = 4
+                            regex = re.search(r'ANEXO ?([IVXL]+|\u00daNICO?|.*)', paragrafos[i-k][4])
+                            if (regex and regex.span()[0]==0 ):
+                                anexo-=1
+                            k+=1
+                        colunaUnica = False
+                    else:
+                        colunas[i][0] = 2
+                else:
+                    if colunaUnica :
+                        colunas[i][0] = 6
+                    else:
+                        colunas[i][0] = colunas[i-1][0]
+                    k=1
+                    while i-k &gt; 0 and anexo &gt; 0 :
+                        if colunaUnica:
+                            colunas[i-k][0] = 6
+
+                        regex = re.search(r'ANEXO ?([IVXL]+|\u00daNICO?|.*)', paragrafos[i-k][4])
+                        if (regex and regex.span()[0]==0):
+                            anexo-=1
+                        k+=1
+                    colunaUnica = False
+            elif not re.search(r'C *O *N *S *I *D *E *R *A *N *D *O *:|R *E *S *O *L *V *E *:|D *E *C *R *E *T *A *:', paragrafos[i][4]):
+                if abs(colunas[i][1][1] - 222.655632019043) &lt; 125 and paragrafos[i][2] &gt; 280:
+                    colunas[i][0] = 4
+                elif 534 &gt; paragrafos[i][0] &gt; 420 : 
+                    colunas[i][0] = 5
+                elif 279 &lt; colunas[i][1][1] &lt; 480  :
+                    colunas[i][0] = 2
+                elif colunas[i][1][1] &lt; 279 and (abs(colunas[i][1][1] - 222.655632019043) &gt; abs(colunas[i][1][1] - 165.8691997528076) or (0 &lt; 122.3 - paragrafos[i][0] &lt; 0.2 and 0 &lt; 280 - paragrafos[i][2] &lt; 1 )):
+                    colunas[i][0] = 1
+                elif colunas[i][1][1] &lt; 279 and abs(colunas[i][1][1] - 222.655632019043) &lt; abs(colunas[i][1][1] - 165.8691997528076):
+                    colunas[i][0] = 4
+                elif colunas[i][1][1] &gt; 420 and (abs(colunas[i][1][1] - 590.9314880371094) &gt; abs(colunas[i][1][1] - 647.7062683105469) or 0 &lt;  534.4 - paragrafos[i][0]  &lt; 0.8):
+                    colunas[i][0] = 3
+                elif colunas[i][1][1] &gt; 420 and (abs(colunas[i][1][1] - 590.9314880371094) &lt; abs(colunas[i][1][1] - 647.7062683105469)):
+                    colunas[i][0] = 5
+            elif re.search(r'C *O *N *S *I *D *E *R *A *N *D *O *:|R *E *S *O *L *V *E *:|D *E *C *R *E *T *A *:', paragrafos[i][4]):
+                if 0 &lt;  293.5 - paragrafos[i][0] &lt; 0.15:
+                    colunas[i][0] = 2
+                elif 0 &lt;  534.4 - paragrafos[i][0] &lt; 0.8:
+                    colunas[i][0] = 3
+                else:
+                    colunas[i][0] = colunas[i-1][0]
+
+    if verbose:                            
+        for i in range(len(paragrafos)):
+            print(colunas[i])
+
+    return colunas
+</code></pre>
+<p>O caso dos parágrafos pequenos apresenta maior dificuldade de classificação uma vez que parágrafos de tipos diferentes podem acabar ocupando o mesmo espaço, assim para definirmos sua classificação devemos olhar aqueles que vem antes e/ou depois. O primeiro caso analizado é se há a presença do "Id" no paragrafo, assim podemos definir o tipo dele observando sua centralidade e posição de quem vem antes. Em seguida observamos mais atentamente os parâmetros existentes a fim de definir a coluna. Uma vez terminada a analize retornamos todas as métricas calculadas.</p>
+<h3 id="sortcolunas">sortColunas</h3>
+<p>A função <em>sortColunas</em> tem como objetivo arrumar os paragrafos na ordem de leitura correto, assim garantindo sua corretude. Ela recebe 3 parâmetros de entrada, sendo eles o array a ser arrumado, o título da seção sendo analizada e <em>verbose</em> para impressão em tela. Seu funcionamento ocorre ao percorrermos o array passado, observando se seus membros obedecem as regras abaixo:</p>
+<ol>
+<li>Se eu estou na mesma página, não posso subir na mesma coluna</li>
+<li>Se eu estou na mesma página, não posso subir para a esquerda</li>
+</ol>
+<p>outras regras se mostram necessarias para casos mais específicos, entretanto essas duas já contemplam boa parte dos erros de formatação encontrados.</p>
+<pre><code class="language-python">def sortColunas(colunas,Titulo, verbose = False):
+    from re import search
+
+    for i in range(len(colunas)):
+        if i == 0 and colunas[i][2][4] != Titulo:
+            print(colunas[i][2][4],&quot;O titulo da seção e o das colunas não batem&quot;) if verbose else &quot;&quot;
+            break
+        elif i == 0: 
+            colunas[i][0] = colunas[i+1][0]
+        antes = colunas[i-1]
+        agora = colunas[i]
+        depois = colunas[i+1] if i+1 &lt; len(colunas)-1 else &quot;&quot;
+
+        # corrigindo a coluna de alguns que passaram
+        if depois != &quot;&quot; and antes[0] == depois[0] and antes[0] != agora[0] and antes[1][-1]&lt;agora[1][-2]&lt;depois[1][-2]:
+            print(cores[&quot;ciano&quot;]+&quot;\nConfundi Coluna: &quot;+cores[&quot;reset&quot;], antes[0],agora[0], depois[0]) if verbose else &quot;&quot;
+            agora[0] = antes[0]
+            input() if verbose else &quot;&quot;
+        # Corrigindo coluna unica
+        if depois != &quot;&quot; and depois[0] == 6 and agora[0] in [1,2,4,10] and not search(r'ANEXO ?([IVXL]+|\u00daNICO?|.*)', depois[2][4]):
+            print(cores[&quot;amarelo&quot;]+&quot;Achei coluna unica: &quot;+cores[&quot;reset&quot;]) if verbose else &quot;&quot;
+            k=0
+            abaixo = depois
+            while i-k&gt;=0 and not (search(r'DECRETO', colunas[i-k][2][4]) and search(r'DECRETO', colunas[i-k][2][4]).span()[0] == 0) and colunas[i-k][0] in [1,2,4,10] and colunas[i-k][1][-1]&lt;abaixo[1][-2] and abaixo[2][-1] == colunas[i-k][2][-1]:
+                colunas[i-k][0] = 6
+                abaixo = colunas[i-k]
+                k+=1
+            colunas[i-k][0] = 6
+            agora = colunas[i]
+            print(colunas[i-k]) if verbose else &quot;&quot;
+            print(colunas[i-k+1]) if verbose else &quot;&quot;
+            print(&quot;parei em &quot;, colunas[i-k], &quot;\n&quot;) if verbose else &quot;&quot;
+            input() if verbose else &quot;&quot;
+
+        # se em mesma pagina
+        if agora[2][-1] == antes[2][-1]:
+            # se eu estou acima do meu antecessor
+            if agora[1][-2]&lt;antes[1][-1]:
+                # se estou na mesma coluna que meu antecessor
+                if agora[0] == antes[0] :
+                    print(cores[&quot;azul&quot;] + &quot;\nMesma coluna Errado:&quot; + cores[&quot;reset&quot;],agora[0], agora[1][-2], antes[1][-1]) if verbose else &quot;&quot;
+                    k=1
+                    while i-k &gt;= 0 and agora[1][-2] &lt; colunas[i-k][1][-1] and agora[0] == colunas[i-k][0] and agora[2][-1] == colunas[i-k][2][-1]  :
+                        k+=1
+                    print(&quot;Botei antes de&quot;, i-k+1, colunas[i-k][0:2]) if verbose else &quot;&quot;
+                    aux = colunas.pop(i)
+                    colunas.insert(i-k+1, aux)
+                    print(colunas[i-k][0:2]) if verbose else &quot;&quot;
+                    print(colunas[i-k+1][0:2]) if verbose else &quot;&quot;
+                    print(colunas[i-k+2][0:2]) if verbose else &quot;&quot;
+                    input() if verbose else &quot;&quot;
+
+                # se estou em uma coluna antes do meu antecessor
+                elif agora[0]&lt;antes[0]:
+                    print(&quot;\033[2J\033[H&quot;, end='') if verbose else &quot;&quot;
+                    for a in range(i):
+                        print(colunas[a]) if verbose else &quot;&quot;
+
+                    print(cores[&quot;verde&quot;] + &quot;\ndiferentes coluna Errado:&quot; + cores[&quot;reset&quot;] , agora[0:2], antes[0:2]) if verbose else &quot;&quot;
+                    k=1
+                    while i-k&gt;=0 and (agora[2][-1] == colunas[i-k][2][-1]):
+                        if (agora[0] == colunas[i-k][0] and agora[1][-2] &gt; colunas[i-k][1][-1]) or (colunas[i-k][0] &lt; agora[0]):
+                            break
+                        k+=1
+                    print(&quot;Botei antes de&quot;, i-k, colunas[i-k][0:2]) if verbose else &quot;&quot;
+                    aux = colunas.pop(i)
+                    colunas.insert(i-k+1, aux)
+                    print(colunas[i-k][0:2]) if verbose else &quot;&quot;
+                    print(colunas[i-k+1][0:2]) if verbose else &quot;&quot;
+                    print(colunas[i-k+2][0:2]) if verbose else &quot;&quot;
+                    input() if verbose else &quot;&quot;
+
+    if verbose:                            
+        for i in range(len(colunas)):
+            print(colunas[i])
+
+    return colunas
+</code></pre>
+<h1 id="v4py">v4.py</h1>
+<h2 id="status_1">Status</h2>
+<p>Em desenvolvimento</p>
+<h2 id="funcionamento_1">Funcionamento</h2>
+<p>Essa rotina funciona ao tentar arrumar o texto extraído do pdf de maneira gulosa para cada parágrafo. Sua lógica funciona de maneira a para cada parágrafo(<em>pivot</em>) olha para frente e busca frases cujo as coordenadas indicam:</p>
+<ol>
+<li>que sou da mesma coluna que o <em>pivot</em></li>
+<li>que sou acima do <em>pivot</em></li>
+</ol>
+<p>E com isso identificamos os parágrafos onde a estração foi mal realizada. </p>
+<p>A identificação da coluna acontece ao medirmos se há interseção entre a aréa ocupada na dimensão X do pivot com a da frase analizada. Isso funciona devido ao fato da arrumação em colunas se dar separados por margens, assim toda coluna apresenta intesessão entre seus paragrafos em relação ao eixo X. O problema apenas se da na forma de que o minerador do pdf retira as informações, se prendendo apenas ao tamanho da frase em si em vez de ocupar o tamanho da coluna toda.</p>
+<p>O desenvolvimento foi interrompido antes da solução das seguintes questões: </p>
+<ol>
+<li>
+<p>Identificação dos limites da coluna:</p>
+<p>O pivot pode estar na mesma coluna da frase e não ser grande o suficiente para englobar a outra frase, caso dos Título com o ID. Não acredito que preciso realizar esse cálculo previamente, apenas olhando os casos na hora deve ser suficiente.</p>
+</li>
+</ol>
+<p>Abaixo a explicação de sua rotina.</p>
+<p>Ela se utiliza das seguintes bibliotecas:</p>
+<pre><code class="language-python">
+import os
+import tqdm
+import json
+
+import re
+import pymupdf as pdf
+
+</code></pre>
+<p>Temos dois métodos de apoio cujo funcionamento se assemelham, <em>infringeSemiEspaco</em> e <em>infringeEspaco</em>. Ambas testam pra ver se há interseção, sendo que a primeira parcial, isto é, se temos pelo menos um vértice de algum deles dentro da área do outro, e a segunda total, ambas os vértices dentro da área do outro.</p>
+<pre><code class="language-python">
+def infringeSemiEspaco(e1, e2,indice = 0):
+    maior = e1 if e1[indice+2] - e1[indice] &gt; e2[indice+2] - e2[indice] else e2
+    if (maior == e1 and ( maior[indice]&lt;=e2[indice]&lt;=maior[indice+2] or maior[indice]&lt;=e2[indice+2]&lt;=maior[indice+2])) or (maior == e2 and ( maior[indice]&lt;=e1[indice]&lt;=maior[indice+2] or maior[indice]&lt;=e1[indice+2]&lt;=maior[indice+2])):
+        return True
+    else:
+        return False
+
+def infringeEspaco(e1, e2,indice = 0):
+    maior = e1 if e1[indice+2] - e1[indice] &gt; e2[indice+2] - e2[indice] else e2
+    if (maior == e1 and ( maior[indice]&lt;=e2[indice]&lt;=maior[indice+2] and maior[indice]&lt;=e2[indice+2]&lt;=maior[indice+2])) or (maior == e2 and ( maior[indice]&lt;=e1[indice]&lt;=maior[indice+2] and maior[indice]&lt;=e1[indice+2]&lt;=maior[indice+2])):
+        return True
+    else:
+        return False
+
+</code></pre>
+<p>A rotina principal tem funcionamento ideintico à <em>v3/pdfReader</em> retirando algumas linhas que são consideradas inúteis, como aquelas de propaganda/códigos de formatação que não carregam nenhuma informação sobre os decretos, depois separamos cada parágrafo por página e começamos a procurar os parágrafos fora de ordem.</p>
+<p>Essa procura é feita olhando para cada parágrafo se alguém abaixo dele, deveria estar acima dele. Fazemos essa procura por causa da lógica de leitura e perda de dimensionalidade trazida pelo leitor de PDF, com isso aqueles parágrafos que se encontram fora de lugar acabam por se encontrarem em um ponto à frente de algum de seus colegas de colunas.</p>
+<pre><code class="language-python">
+def retirar(filepath, verbose = False):
+    import re
+    import pymupdf as pdf
+    limites = [52.441368103027344, 87.45538330078125, 761.1741333007812, 1180.38134765625]
+    nomeDir = &quot;DOsProcessados/Decretos/&quot;+filepath.split(&quot;/&quot;)[-1].split(&quot;.&quot;)[0]
+    if not os.path.isdir(&quot;DOsProcessados&quot;):
+        os.mkdir(&quot;DOsProcessados&quot;)
+        os.mkdir(&quot;DOsProcessados/Decretos&quot;)
+        os.mkdir(nomeDir)
+    elif not os.path.isdir(nomeDir):
+        os.mkdir(nomeDir)
+
+
+    doc = pdf.open(filepath)
+    arq = []
+    for i in doc:
+        pagina = []
+        for j in i.get_text(&quot;blocks&quot;):
+            pagina.append(j)
+
+        arq.append(pagina)
+
+    pattern = r'(\\x[01][0-9A-Fa-f]|\\ufffd)' ## remover caracteres binarios do documento
+    par = 0
+    pagina = 0
+    do = []
+    paragrafo= &quot;&quot;
+    valor = False
+    contador = 0
+    for page in tqdm.tqdm(arq):
+        acc = []
+        for lines in range(len(page)):
+            if par &lt; page[lines][-2]:
+                par = page[lines][-2]
+            else:
+                par = page[lines][-2]
+                pagina+=1
+            if (pagina == 1 and page[lines][-2]&lt;19) or (pagina == 2 and page[lines][-2]&lt;18) or (page[lines][4]==&quot;&quot;) or (len(page[lines][4])&lt;=2):
+                if re.search(r'Id: [0-9]+', page[lines][4]):
+                    print('foi aqui 1')        
+                if re.search(r'SEI-080002/002420/2024',page[lines][4]):
+                    print(page[lines][4])
+                continue 
+
+            if &quot;&quot;.join(page[lines][4].split(&quot;\n&quot;)) in [&quot;FI&quot;,&quot;Solicite seu or\u00e7amento:   &quot;, &quot;Decreto Estadual 47.364/2020&quot;, &quot;OBRIGATORIEDADE DE CONSULTA \u00c0 IMPRENSA OFI-CIAL NAS CONTRATA\u00c7\u00d5ES DE SERVI\u00c7OS GR\u00c1FI-COS PELA ADMINISTRA\u00c7\u00c3O DIRETA E INDIRETA.&quot;, &quot;2,00R$&quot;, &quot;Livrosnovosde&quot;, &quot;at\u00e9 9,00&quot;, &quot;programamaisleitura&quot;, &quot;maisleitura@ioerj.rj.gov.br&quot;, &quot;Ler \u00e9 o maior barato!&quot;, &quot;programamaisleituramaisleitura@ioerj.rj.gov.br&quot;, &quot; acesso \u00e0 leitura.acesso \u00e0 leitura.&quot;, &quot;Endere\u00e7os&quot;]:
+                if re.search(r'Id: [0-9]+', page[lines][4]):
+                    print('foi aqui 2')
+
+                if re.search(r'SEI-080002/002420/2024',page[lines][4]):
+                    print(page[lines][4])
+                continue
+
+            if re.search(pattern,page[lines][4].encode(&quot;unicode_escape&quot;).decode()):
+                if re.search(r'Id: [0-9]+', page[lines][4]):
+                    print('foi aqui 3')
+
+                if re.search(r'SEI-080002/002420/2024',page[lines][4]):
+                    print(page[lines][4])
+                continue
+            if &quot;O VALOR DA\nSEGURANÇA&quot; in page[lines][4]:
+
+                    fraseSem = &quot;&quot;
+                    booleanValor = False
+                    for frase in page[lines][4].split(&quot;\n&quot;):
+                        if frase != &quot;O VALOR DA&quot; and not booleanValor:
+                            fraseSem += frase + &quot;\n&quot;
+                        elif frase == &quot;O VALOR DA&quot; or booleanValor:
+                            booleanValor = True
+                            paragrafo += frase
+                    aux = list(page[lines])
+                    aux[4]=fraseSem
+                    aux[-1] = pagina
+                    if re.search(r'Id: [0-9]+', page[lines][4]):
+                        print('foi aqui 4')
+                        print(len(acc), lines)
+                    acc.append(tuple(aux))
+                    valor = True
+                    continue
+            elif valor:
+                if acc == &quot;O VALOR DASEGURANÇAPUBLICOUNAIMPRENSA,ÉOFICIAL&quot;:
+                    valor = False
+                    paragrafo = &quot;&quot;
+                else:
+                    paragrafo+=page[lines][4].split(&quot;\n&quot;)[0]
+                aux = list(page[lines])
+                aux[-1] = pagina
+                acc.append(tuple(aux))
+            else:
+                if re.search(r'SEI-080002/002420/2024',page[lines][4]):
+                    print(&quot;AQUIIIIIIIIIIII&quot;)
+                    print(page[lines][4])
+                    print(len(acc),lines)
+                aux = list(page[lines])
+                aux[-1] = pagina
+                acc.append(tuple(aux))
+        do.append(acc)
+
+    for pagina2 in range(len(do)):
+        blocos = []
+        tamanhoPagina = len(do[pagina2])
+        paragrafo2 = 0
+        while paragrafo2 &lt; tamanhoPagina:
+            for depois in range(paragrafo2+1,tamanhoPagina):
+                if(do[pagina2][paragrafo2][3] &gt; do[pagina2][depois][3] and  infringeEspaco(do[pagina2][paragrafo2], do[pagina2][depois])):
+                    for antes in range(0, paragrafo2):
+                        if(do[pagina2][depois][3] &lt; do[pagina2][antes][3] and  infringeEspaco(do[pagina2][depois], do[pagina2][antes])):
+                            print(&quot;ACHEI&quot;, pagina2)
+                            print(do[pagina2][paragrafo2])
+                            print(do[pagina2][depois])
+                            print(do[pagina2][antes])
+                            print()
+                            input()
+
+
+            paragrafo2 +=1
+
+</code></pre>
+              
+            </div>
+          </div><footer>
+    <div class="rst-footer-buttons" role="navigation" aria-label="Navegação no rodapé">
+        <a href="../extracaoTratamentoPainelSETD/" class="btn btn-neutral float-left" title="extracao_tratamento_painel_SETD.py"><span class="icon icon-circle-arrow-left"></span> Anterior</a>
+    </div>
+
+  <hr/>
+
+  <div role="contentinfo">
+    <!-- Copyright etc -->
+  </div>
+
+  Construído com <a href="https://www.mkdocs.org/">MkDocs</a> usando um <a href="https://github.com/readthedocs/sphinx_rtd_theme">tema</a> provido por <a href="https://readthedocs.org">Read the Docs</a>.
+</footer>
+          
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+
+  <div class="rst-versions" role="note" aria-label="Versões">
+  <span class="rst-current-version" data-toggle="rst-current-version">
+    
+    
+      <span><a href="../extracaoTratamentoPainelSETD/" style="color: #fcfcfc">&laquo; Anterior</a></span>
+    
+    
+  </span>
+</div>
+    <script src="../../js/jquery-3.6.0.min.js"></script>
+    <script>var base_url = "../..";</script>
+    <script src="../../js/theme_extra.js"></script>
+    <script src="../../js/theme.js"></script>
+      <script src="../../search/main.js"></script>
+    <script>
+        jQuery(function () {
+            SphinxRtdTheme.Navigation.enable(true);
+        });
+    </script>
+
+</body>
+</html>
