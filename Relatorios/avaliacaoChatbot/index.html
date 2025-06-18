@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="../../css/theme_extra.css" />
         <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.8.0/styles/github.min.css" />
         <link href="../../style.css" rel="stylesheet" />
+        <link href="https://unpkg.com/katex@0.16.4/dist/katex.min.css" rel="stylesheet" />
     
       <script>
         // Current page data
@@ -51,7 +52,21 @@
     <ul class="current">
     <li class="toctree-l2"><a class="reference internal" href="#autores">Autores</a>
     </li>
-    <li class="toctree-l2"><a class="reference internal" href="#texto">Texto</a>
+    <li class="toctree-l2"><a class="reference internal" href="#introducao">Introdução</a>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#definicao-metricas-de-calculo">Definição Métricas de Cálculo</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#conceitos-e-definicoes-fundamentais">Conceitos e Definições Fundamentais:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#interpretacao-dos-resultados">Interpretação dos resultados</a>
+        <ul>
+    <li class="toctree-l3"><a class="reference internal" href="#o-desempenho-geral-do-chatbot">O desempenho geral do chatbot:</a>
+    </li>
+        </ul>
+    </li>
+    <li class="toctree-l2"><a class="reference internal" href="#referencias">Referências</a>
     </li>
     </ul>
                   </li>
@@ -102,8 +117,8 @@
 </style>
 
 <h2 id="autores">Autores</h2>
-<p>Beatriz Gomes de Souza  </p>
-<h2 id="texto">Texto</h2>
+<p>Beatriz Gomes de Souza</p>
+<h2 id="introducao">Introdução</h2>
 <p>Este relatório apresenta a avaliação de desempenho de um chatbot voltado para a consulta de serviços, com o objetivo de verificar sua eficácia na compreensão das solicitações dos usuários, precisão nas respostas e fluidez na interação. A análise abrange tanto métricas quantitativas — como acurácia, precisão, recall e F1-score — quanto aspectos qualitativos relacionados à experiência do usuário, como a satisfação geral com o atendimento.</p>
 <p>Além disso, são consideradas análises técnicas relacionadas ao modelo de linguagem utilizado, incluindo a qualidade dos embeddings semânticos responsáveis por mapear as intenções e variações linguísticas dos usuários. A partir dos resultados obtidos, o modelo de avaliação aqui descrito viabiliza oportunidades de aprimoramento do sistema e recomendações para futuras atualizações do chatbot.</p>
 <p>Neste momento, o modelo de avaliação adotado irá desconsiderar as variáveis qualitativas tradicionais, como clareza da linguagem e naturalidade da conversa, uma vez que essas dependem da aplicação de instrumentos específicos, como pesquisas de satisfação, entrevistas ou testes de usabilidade, os quais não estão disponíveis no presente estágio da análise. Assim, a avaliação qualitativa será limitada ao feedback espontâneo fornecido pelos usuários durante o uso do chatbot, registrado no próprio fluxo de interação.</p>
@@ -117,11 +132,6 @@
 </tr>
 </thead>
 <tbody>
-<tr>
-<td>(COUNT (PROCESSO) x 27.81) x 0.00014</td>
-<td>(COUNT (PROCESSO) x 27.81) x 0.5</td>
-<td>(COUNT (PROCESSO) x 27.81) x 0.04</td>
-</tr>
 <tr>
 <td>Acurácia</td>
 <td>Percentual de acertos na identificação correta da intenção</td>
@@ -164,6 +174,127 @@
 </tr>
 </tbody>
 </table>
+<h2 id="definicao-metricas-de-calculo">Definição Métricas de Cálculo</h2>
+<h3 id="conceitos-e-definicoes-fundamentais">Conceitos e Definições Fundamentais:</h3>
+<p>Nesta seção, trataremos de alguns conceitos básicos e fundamentais para compreender a avaliação de chatbot.</p>
+<h4 id="intencao"><strong>INTENÇÃO</strong>:</h4>
+<p>é a representação da ação ou objetivo que o usuário deseja realizar ao enviar uma mensagem. É a forma como o sistema interpreta o que o usuário quer fazer, independentemente da forma como ele se expressa.  </p>
+<p>Desta forma, a definição das variáveis e seus resultados são:</p>
+<h4 id="acuracia"><strong>Acurácia</strong>:</h4>
+<p>Acurácia mede quantas vezes o modelo acertou, considerando todos os casos, tanto positivos quanto negativos. Temos então que:  </p>
+<p>$ acurácia = \frac{VP+VN}{VP+VN+FP+FN} $  </p>
+<p>Onde:  </p>
+<ul>
+<li><strong>VP</strong> (Verdadeiro Positivo): acertos em casos positivos.  </li>
+<li><strong>VN</strong> (Verdadeiro Negativo): acertos em casos negativos.  </li>
+<li><strong>FP</strong> (Falso Positivo): falsos positivos (erros do tipo 1).  </li>
+<li><strong>FN</strong> (Falso Negativo): falsos negativos (erros do tipo 2).  </li>
+</ul>
+<p>No caso da acurácia, se não forem bem definidos os VP, VN, FP, FN, a medida de avaliação irá alucinar. Para solucionar este problema, utiliza-se a Matriz de Confusão como método a dar suporte no cálculo de acurácia.  </p>
+<p>a. <strong>Matriz de confusão:</strong>  </p>
+<p>Um chatbot inteligente precisa entender a intenção do usuário e responder adequadamente. Para saber se ele está fazendo isso bem, usa-se métricas de avaliação — e uma das mais importantes é a matriz de confusão.  </p>
+<p>A matriz de confusão é uma tabela que compara o que o modelo previu com o que era real. Ela é muito usada em classificação, como quando um chatbot tenta identificar a intenção de uma pergunta (“emitir documento", "agendar consulta", "consulta de remédio").</p>
+<table>
+<thead>
+<tr>
+<th>Classe Real</th>
+<th>Positivos</th>
+<th>Negativos</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Positivo</td>
+<td>VP</td>
+<td>FN</td>
+</tr>
+<tr>
+<td>Negativo</td>
+<td>FP</td>
+<td>VN</td>
+</tr>
+</tbody>
+</table>
+<p>Desta forma, a diagonal principal VP - VN representa os acerto (o chatbot acertou a intenção do usuário), enquanto a diagonal de fora FN-FP representa os erros (o chatbot confundiu as intenções).</p>
+<h4 id="recall-de-classes"><strong>Recall de classes</strong>:</h4>
+<p>Avaliar um chatbot que entende linguagem natural (NLP) não é só dizer se ele "acerta ou erra". Precisamos saber como ele erra — e o recall é uma métrica que responde a uma pergunta muito importante: “Quantos dos casos que deveriam ter sido detectados, ele de fato conseguiu identificar corretamente?”.</p>
+<p>Logo, o recall se concentra na linha da matriz de confusão, ou seja, nos valores reais. Ele mede quantos dos exemplos de uma classe específica foram corretamente identificados.</p>
+<p>Reutilizando os termos identificados na Matriz de Confusão, temos que a fórmula final do recall é dada por:</p>
+<p>$ Recall = \frac{VP}{VP+FN} $</p>
+<p>O resultado do recall destaca que o modelo encontrou x% dos casos reais da classe que ele predeterminou a detectar. Logo, 90% de recall implica em dizer que o modelo acertou 90% das vezes e errou 10% das vezes.</p>
+<p>O recall destaca a relevância do modelo, uma vez que, recalls altos implicam em modelos que erram pouco. Porém, é necessário analisar também a precisão.</p>
+<h4 id="precisao"><strong>Precisão</strong>:</h4>
+<p>A precisão é uma métrica usada para avaliar a performance de modelos de classificação, como aqueles usados em sistemas de reconhecimento de intenções em chatbots. Ela responde à seguinte pergunta: “Das previsões positivas feitas pelo modelo, quantas estavam corretas?” Ou seja, mede a qualidade dos acertos, e não apenas a quantidade.</p>
+<p>A fórmula da precisão é: </p>
+<p>$ \frac{VP}{VP+FP} $</p>
+<p>Nessa equação, verdadeiros positivos (VP) são os casos em que o modelo previu corretamente a classe positiva, enquanto falsos positivos (FP) são os casos em que o modelo previu positivamente, mas estava errado. Em outras palavras, o modelo disse que era daquela classe, mas não era.</p>
+<p>Por exemplo, em um chatbot que tenta identificar quando o usuário quer "falar com um atendente", a precisão indicaria quantas das vezes em que o sistema pensou que o usuário queria um atendente, ele estava certo. Se o chatbot previu 50 frases como "falar com atendente", mas apenas 30 estavam realmente corretas, a precisão seria:</p>
+<p>$ Precisão = \frac{30}{30+20} = \frac{30}{50} = 0.6 = 60\% $</p>
+<p>A interpretação do resultado consiste em x% das vezes em que o modelo previu que determinada intenção estava certa. Ou seja, <strong>a cada x previsões positivas, y eram equivocadas.</strong></p>
+<p>A precisão nos ajuda a entender o quanto podemos confiar nas decisões positivas do modelo. Porém, como ela não considera os falsos negativos (casos que deveriam ter sido positivos mas foram ignorados), ela costuma ser analisada em conjunto com o recall, e muitas vezes se usa a métrica F1-score para equilibrar ambas.</p>
+<h4 id="f1-score"><strong>F1 Score</strong>:</h4>
+<p>O F1-score é uma métrica de avaliação usada em tarefas de classificação — como no funcionamento de chatbots baseados em NLP — que busca equilibrar duas medidas essenciais: precisão e recall. Enquanto a precisão mede o quanto das previsões positivas estavam corretas, e o recall indica o quanto dos casos relevantes foram encontrados, o F1-score combina ambas em um único número, permitindo uma visão mais completa da performance do modelo. </p>
+<p>A fórmula do F1-score é:</p>
+<p>$ F1-score = 2 * \frac{precisão\ *\ recall}{precisão\ +\ recall}  $</p>
+<p>Essa é a média harmônica entre precisão e recall — uma forma de evitar que o F1-score seja alto se apenas uma das duas métricas for alta e a outra for muito baixa. Em outras palavras, o F1-score penaliza desequilíbrios entre precisão e recall, exigindo que ambas estejam razoavelmente boas para que o valor final também seja satisfatório.</p>
+<p>O F1-score varia entre 0 e 1:</p>
+<ul>
+<li>1 significa desempenho perfeito: todas as previsões relevantes foram feitas corretamente e sem erros.</li>
+<li>0 indica falha total: nenhuma previsão relevante ou correta foi feita.</li>
+<li>Valores entre 0,5 e 0,9 indicam níveis moderados a bons níveis de desempenho, dependendo do contexto e da aplicação.</li>
+</ul>
+<p>O F1-score é especialmente útil quando:</p>
+<ul>
+<li>Há classes desbalanceadas (ou seja, algumas categorias são muito mais frequentes que outras);</li>
+<li>Erros de falsos positivos e falsos negativos têm impactos igualmente relevantes;</li>
+<li>Você precisa avaliar o modelo de forma equilibrada, sem favorecer só recall ou só precisão.</li>
+</ul>
+<p>Em sistemas de chatbots, o F1-score pode mostrar se o modelo está sendo eficiente em identificar intenções sem errar demais ou sem deixar passar interações importantes.</p>
+<h4 id="fallback"><strong>Fallback</strong>:</h4>
+<p>Em sistemas de chatbots com NLP (Processamento de Linguagem Natural), o termo fallback se refere à resposta padrão do sistema quando ele não consegue entender ou classificar corretamente a entrada do usuário. É, essencialmente, um mecanismo de segurança: quando o modelo não tem certeza sobre a intenção ou a confiança da previsão é muito baixa, ele "desiste" de tentar responder de forma específica e ativa uma resposta genérica — como por exemplo: “Desculpe, não entendi. Pode reformular?”.</p>
+<p>Do ponto de vista técnico, o fallback é ativado com base em limiares de confiança (confidence threshold) definidos no modelo de classificação. Se a previsão da intenção do usuário não atingir esse limite mínimo de confiança, o chatbot considera que é melhor não arriscar uma resposta incorreta e, assim, retorna a resposta fallback.</p>
+<p>Embora o fallback seja uma proteção contra erros graves de interpretação, ele também é um sinal de limitação do modelo. Um número alto de fallbacks pode indicar que:</p>
+<ul>
+<li>O modelo não está entendendo bem o vocabulário dos usuários;</li>
+<li>As intenções estão mal definidas ou muito parecidas entre si;</li>
+<li>Os dados de treinamento são insuficientes ou mal distribuídos;</li>
+<li>O limiar de confiança está muito alto, fazendo o modelo "desistir" com facilidade.</li>
+</ul>
+<p>A análise quantitativa do fallback pode ser feita simplesmente contando a frequência com que ele ocorre durante as interações. Uma métrica comum é: </p>
+<p>$ Taxa de Fallback = \frac{Número\ de\ respostas\ fallback}{Número\ total\ de\ interacões} $</p>
+<p>Por exemplo, se um chatbot respondeu com fallback em 150 de 1.000 interações, a taxa de fallback é 15%. A interpretação do resultado da taxa de fallback depende do contexto. Em geral, uma taxa de fallback abaixo de 5% é considerada boa para chatbots bem treinados. Taxas acima de 10% sinalizam que o modelo precisa de ajustes — seja nos dados, nas intenções ou nas regras de fallback.Em suma, o fallback é um indicativo da robustez e cobertura do modelo. </p>
+<h4 id="feedback-do-usuario"><strong>Feedback do usuário</strong>:</h4>
+<p>O feedback do usuário é uma das formas mais diretas e valiosas de avaliar se o modelo está cumprindo seu papel de forma eficaz. Diferentemente de métricas internas, como acurácia ou recall, o feedback representa a percepção real do usuário sobre a qualidade da interação — e, portanto, oferece uma perspectiva essencial para o aprimoramento contínuo do sistema. O feedback pode ser explícito, quando o usuário é convidado a avaliar a resposta do chatbot (por exemplo, com botões de 👍/👎 ou uma escala de satisfação), ou implícito, quando o sistema infere a satisfação com base em comportamentos, como repetição da pergunta, abandono da conversa, ou solicitação direta por atendimento humano. Neste caso, consideramos o caso de avaliação explícita.</p>
+<p>Esse retorno pode ser classificado, armazenado e analisado por meio de métricas como:</p>
+<p>$ Taxa\ de\ Satisfacão = \frac{Número\ de\ feedbacks\ positivos}{Total\ de\ feedbacks\ coletados} $</p>
+<p>A interpretação da taxa de satisfação pode ser dada, genericamente, como:</p>
+<ul>
+<li>Acima de 85%: o chatbot está oferecendo uma experiência positiva e confiável para a maioria dos usuários.</li>
+<li>Entre 60% e 85%: o sistema está funcional, mas há espaço para ajustes nas respostas, tom de linguagem ou entendimento das intenções.</li>
+<li>Abaixo de 60%: sinal de alerta — o chatbot está frequentemente falhando em atender às expectativas dos usuários.</li>
+</ul>
+<p>Por fim, vale destacar que a ausência de feedback também deve ser monitorada. Se poucos usuários interagem com os mecanismos de avaliação, isso pode indicar que o sistema não está incentivando e facilitando essa interação, o que prejudica o processo de melhoria contínua.</p>
+<h2 id="interpretacao-dos-resultados"><strong>Interpretação dos resultados</strong></h2>
+<h3 id="o-desempenho-geral-do-chatbot"><strong>O desempenho geral do chatbot</strong>:</h3>
+<p>Para construirmos uma fórmula geral de desempenho que venha a refletir todos os aspectos técnicos e de experiência do usuário a partir de suas respectivas importâncias atribuídas, teremos definidos, então:</p>
+<ul>
+<li>A acurácia como a proporção de classificações corretas entre todas as previsões</li>
+<li>F1-score como o equilíbrio entre precisão e recall</li>
+<li>Fallback como o indicador de falha na compreensão</li>
+<li>Feedback do usuário como a avaliação qualitativa da experiência do usuário</li>
+<li>E, por sua vez, a precisão já está contida no F1-score, mas vamos destacá-la se for necessário ajustar.</li>
+</ul>
+<p>Sendo assim, a construção de uma fórmula geral dá-se por:</p>
+<p>$ Desempenho\ Geral = 0.10 * F1score + 0.10 * (1 - Fallback) + 0.10 * Acurácia + 0.70 * Feedback $</p>
+<p>Onde: </p>
+<ul>
+<li>F1-score será uma métrica principal, refletindo a qualidade técnica do modelo.</li>
+<li>Taxa de fallback será usada como penalidade (quanto mais alto o fallback, menor o desempenho).</li>
+<li>Acurácia é utilizada para verificar a proporção de classificações corretas entre todas as previsões. </li>
+<li>Feedback do usuário (de 0 a 1) terá peso 0.70, pois reflete diretamente a percepção de qualidade.</li>
+</ul>
+<h2 id="referencias">Referências</h2>
+<p>Izbicki, Rafael. <strong>Aprendizado de máquina : uma abordagem estatística [livro eletrônico]</strong> / Rafael Izbicki, Tiago Mendonça dos Santos. -- São Carlos, SP : Rafael Izbicki, 2020.</p>
               
             </div>
           </div><footer>
@@ -203,6 +334,9 @@
     <script>var base_url = "../..";</script>
     <script src="../../js/theme_extra.js"></script>
     <script src="../../js/theme.js"></script>
+      <script src="../../javascripts/katex-init.js"></script>
+      <script src="https://unpkg.com/katex@0.16.4/dist/katex.min.js"></script>
+      <script src="https://unpkg.com/katex@0.16.4/dist/contrib/auto-render.min.js"></script>
       <script src="../../search/main.js"></script>
     <script>
         jQuery(function () {
